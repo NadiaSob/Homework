@@ -19,7 +19,7 @@ int main()
 		{
 			if (string[i] == ';')
 			{
-				for (int j = i + 1; string[j] != '\0'; ++j)
+				for (int j = i; string[j] != '\0'; ++j)
 				{
 					printf("%c", string[j]);
 				}
