@@ -5,7 +5,7 @@ void bubbleSort(int *array, int size)
 {
 	for (int j = 0; j < size - 1; ++j)
 	{
-		for (int l = 0; l < size - 1; ++l)
+		for (int l = 0; l < size - 1 - j; ++l)
 		{
 			if (array[l] > array[l + 1])
 			{
@@ -19,37 +19,43 @@ void bubbleSort(int *array, int size)
 
 void countingSort(int *array, int size)
 {
-	int maximum = 0;
-	for (int i = 0; i < size; ++i)
+	int maximum = array[0];
+	int minimum = array[0];
+	for (int i = 1; i < size; ++i)
 	{
 		if (maximum < array[i])
 		{
 			maximum = array[i];
 		}
+		if (minimum > array[i])
+		{
+			minimum = array[i];
+		}
 	}
-	int *tempArray = new int[maximum] {};
+	int *tempArray = new int[maximum - minimum + 1] {};
 	for (int j = 0; j < size; ++j)
 	{
-		++tempArray[array[j]];
+		++tempArray[array[j] - minimum];
 	}
 	int temp = 0;
-	for (int i = 0; i < maximum; ++i)
+	for (int i = 0; i < maximum - minimum + 1; ++i)
 	{
 		for (int j = 0; j < tempArray[i]; ++j)
 		{
-			array[temp] = i;
+			array[temp] = i + minimum;
 			++temp;
 		}
 	}
+	delete[] tempArray;
 }
 
 bool bubbleTest()
 {
-	int array1[5] = { 5, 3, 2, 1, 4 };
-	int array2[5] = { 0, 0, 1, 0, 1 };
-	bubbleSort(array1, 5);
-	bubbleSort(array2, 5);
-	for (int i = 0; i < 4; ++i)
+	int array1[7] = { 5, 3, -1, 2, 1, -2, 4 };
+	int array2[7] = { 0, -1, 0, 1, 0, 1, -1 };
+	bubbleSort(array1, 7);
+	bubbleSort(array2, 7);
+	for (int i = 0; i < 6; ++i)
 	{
 		if (array1[i] > array1[i + 1] || array2[i] > array2[i + 1])
 		{
@@ -61,11 +67,11 @@ bool bubbleTest()
 
 bool countTest()
 {
-	int array1[5] = { 5, 3, 2, 1, 4 };
-	int array2[5] = { 0, 0, 1, 0, 1 };
-	countingSort(array1, 5);
-	countingSort(array2, 5);
-	for (int i = 0; i < 4; ++i)
+	int array1[7] = { 5, 3, -1, 2, 1, -2, 4 };
+	int array2[7] = { 0, -1, 0, 1, 0, 1, -1 };
+	countingSort(array1, 7);
+	countingSort(array2, 7);
+	for (int i = 0; i < 6; ++i)
 	{
 		if (array1[i] > array1[i + 1] || array2[i] > array2[i + 1])
 		{
