@@ -5,14 +5,15 @@
 void conversion(int *array, int size)
 {
 	int pivot = array[0];
-	int first = 0, last = size - 1;
+	int first = 0;
+	int last = size - 1;
 	while (first <= last)
 	{
 		while (array[first] < pivot)
 		{
 			++first;
 		}
-		while (array[last] > pivot)
+		while (array[last] >= pivot)
 		{
 			--last;
 		}
@@ -27,16 +28,16 @@ void conversion(int *array, int size)
 	}
 }
 
-bool testForArray(int array[], int size)
+bool testForArray(int array[], int pivot, int size)
 {
 	int temp = 0;
-	while (array[temp] < array[0])
+	while (array[temp] != pivot)
 	{
 		++temp;
 	}
 	for (int i = temp + 1; i < size; ++i)
 	{
-		if (array[i] < temp)
+		if (array[i] < pivot)
 		{
 			return false;
 		}
@@ -49,7 +50,10 @@ bool test()
 	int array1[5] = { 10, 5, 3, 19, 4 };
 	int array2[5] = { 1, 0, 0, 1, 0 };
 	int array3[5] = { 5, 4, 3, 2, 1 };
-	return testForArray(array1, 5) && testForArray(array2, 5) && testForArray(array3, 5);
+	conversion(array1, 5);
+	conversion(array2, 5);
+	conversion(array3, 5);
+	return testForArray(array1, 10, 5) && testForArray(array2, 1, 5) && testForArray(array3, 5, 5);
 }
 
 int main()
@@ -78,6 +82,6 @@ int main()
 	{
 		printf("%d ", array[i]);
 	}
-	delete[]array;
+	delete[] array;
 	return 0;
 }
