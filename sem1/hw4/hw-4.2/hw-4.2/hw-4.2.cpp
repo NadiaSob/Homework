@@ -14,7 +14,14 @@ int theMostCommonElement(int *array, int size)
 		while (array[temp] == array[temp + 1])
 		{
 			++amount;
-			++temp;
+			if (temp != size - 1)
+			{
+				++temp;
+			}
+			else
+			{
+				break;
+			}
 		}
 		if (maxAmount < amount)
 		{
@@ -57,7 +64,7 @@ int main()
 	else
 	{
 		printf("Tests of Quick Sort failed\n");
-		return 0;
+		return 1;
 	}
 	if (test())
 	{
@@ -66,15 +73,15 @@ int main()
 	else
 	{
 		printf("Tests of finding the most common element failed\n");
-		return 0;
+		return 1;
 	}
 	FILE * file = fopen("file.txt", "r");
 	if (!file)
 	{
 		printf("File is not found");
-		return 0;
+		return 1;
 	}
-	int size;
+	int size = 0;
 	fscanf(file, "%d", &size);
 	printf("The size of the array is recieved\n");
 	int *array = new int[size] {};
@@ -84,7 +91,7 @@ int main()
 	}
 	printf("The array is recieved\n");
 	printf("The most common element in array is %d\n", theMostCommonElement(array, size));
-	delete[]array;
+	delete[] array;
 	fclose(file);
 	return 0;
 }

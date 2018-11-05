@@ -3,7 +3,7 @@
 
 int choiceOfPivot(int *array, int first, int last)
 {
-	int mid = (first + last) / 2;
+	const int mid = (first + last) / 2;
 	if ((array[first] <= array[last] && array[first] >= array[mid]) || (array[first] >= array[last] && array[first] <= array[mid]))
 	{
 		return array[first];
