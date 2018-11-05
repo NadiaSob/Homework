@@ -20,9 +20,11 @@ void quickSort(int *array, int first, int last)
 {
 	if (last - first + 1 < 10)
 	{
-		insertSort(array, first, last);
+		insertSort(array, first, last + 1);
+		return;
 	}
-	int left = first, right = last;
+	int left = first;
+	int right = last;
 	int pivot = array[first];
 	while (left <= right)
 	{
@@ -36,7 +38,7 @@ void quickSort(int *array, int first, int last)
 		}
 		if (left <= right)
 		{
-			int temp = array[left];
+			int const temp = array[left];
 			array[left] = array[right];
 			array[right] = temp;
 			++left;
@@ -105,7 +107,7 @@ int main()
 		printf("Tests of Insertion Sort failed\n");
 		return 0;
 	}
-	int size;
+	int size = 0;
 	printf("Enter the size of the array\n");
 	scanf("%d", &size);
 	int *array = new int[size] {};
@@ -119,6 +121,6 @@ int main()
 	{
 		printf("%d ", array[j]);
 	}
-	delete[]array;
+	delete[] array;
 	return 0;
 }
