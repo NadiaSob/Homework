@@ -3,7 +3,7 @@
 
 int choiceOfPivot(int *array, int first, int last)
 {
-	int mid = (first + last) / 2;
+	const int mid = (first + last) / 2;
 	if ((array[first] <= array[last] && array[first] >= array[mid]) || (array[first] >= array[last] && array[first] <= array[mid]))
 	{
 		return array[first];
@@ -63,7 +63,14 @@ int theMostCommonElement(int *array, int size)
 		while (array[temp] == array[temp + 1])
 		{
 			++amount;
-			++temp;
+			if (temp != size - 1)
+			{
+				++temp;
+			}
+			else
+			{
+				break;
+			}
 		}
 		if (maxAmount < amount)
 		{
@@ -106,7 +113,7 @@ int main()
 	else
 	{
 		printf("Tests of Quick Sort failed\n");
-		return 0;
+		return 1;
 	}
 	if (test())
 	{
@@ -115,9 +122,9 @@ int main()
 	else
 	{
 		printf("Tests of finding the most common element failed\n");
-		return 0;
+		return 1;
 	}
-	int size;
+	int size = 0;
 	printf("Enter the size of the array\n");
 	scanf("%d", &size);
 	int *array = new int[size] {};
@@ -127,6 +134,6 @@ int main()
 		scanf("%d", &array[i]);
 	}
 	printf("The most common element in array is %d\n", theMostCommonElement(array, size));
-	delete[]array;
+	delete[] array;
 	return 0;
 }
