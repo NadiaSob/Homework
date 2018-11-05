@@ -5,8 +5,9 @@
 
 void quickSort(int *array, int first, int last)
 {
-	int left = first, right = last;
-	int pivot = array[first];
+	int left = first;
+	int right = last;
+	const int pivot = array[first];
 	while (left <= right)
 	{
 		while (array[left] < pivot)
@@ -38,20 +39,15 @@ void quickSort(int *array, int first, int last)
 
 bool binarySearch(int *array, int key, int left, int right)
 {
-	int mid = (right + left) / 2;
 	if (left >= right)
 	{
-		if (array[left] == key)
-		{
-			return true;
-		}
-		return false;
+		return array[left] == key;
 	}
+	const int mid = (right + left) / 2;
 	if (key == array[mid])
 	{
 		return true;
 	}
-
 	else
 	{
 		if (key < array[mid])
@@ -96,7 +92,7 @@ int main()
 	else
 	{
 		printf("Tests of Quick Sort failed\n");
-		return 0;
+		return 1;
 	}
 	if (binTest())
 	{
@@ -105,9 +101,9 @@ int main()
 	else
 	{
 		printf("Tests of binary search failed\n");
-		return 0;
+		return 1;
 	}
-	srand(time(0));
+	srand(time(nullptr));
 	int n = 0;
 	printf("Enter n\n");
 	scanf("%d", &n);
@@ -116,18 +112,35 @@ int main()
 	{
 		array[i] = (rand() % 1000 + 1) * (rand() % 1000 + 1) * (rand() % 1000 + 1);
 	}
+	printf("The array:\n");
+	for (int i = 0; i < n; ++i)
+	{
+		printf("%d ", array[i]);
+	}
 	quickSort(array, 0, n - 1);
 	int k = 0;
-	printf("Enter k\n");
+	printf("\nEnter k\n");
 	scanf("%d", &k);
+	printf("Numbers we're looking for in the array:\n");
+	bool check = false;
 	for (int j = 0; j < k; ++j)
 	{
 		int temp = (rand() % 1000 + 1) * (rand() % 1000 + 1) * (rand() % 1000 + 1);
+		printf("%d", temp);
 		if (binarySearch(array, temp, 0, n - 1))
 		{
-			printf("%d\n", temp);
+			printf(" - was found in the array\n");
+			check = true;
+		}
+		else
+		{
+			printf("\n");
 		}
 	}
-	delete[]array;
+	if (!check)
+	{
+		printf("No numbers were found\n");
+	}
+	delete[] array;
 	return 0;
 }
