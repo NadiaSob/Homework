@@ -14,7 +14,11 @@ int main()
 		return 1;
 	}
 	List *list = createList();
-	printf("Commands:\n0 - exit\n1 - add value in the sorted list\n2 - delete value from the list\n3 - print the list\n");
+	printf("Commands:\n");
+	printf("0 - exit\n");
+	printf("1 - add value in the sorted list\n");
+	printf("2 - delete value from the list\n");
+	printf("3 - print the list\n");
 	int command = -1;
 	while (command != 0)
 	{
