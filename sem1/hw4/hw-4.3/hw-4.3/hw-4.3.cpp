@@ -3,21 +3,43 @@
 #include <string.h>
 #include <locale.h>
 
-struct record
+struct Record
 {
 	char name[50]{};
-	int number;
+	int number = 0;
 };
 
-void addRecord(record *data, int numberOfRecords)
+void openFile(Record *data, int &numberOfRecords)
 {
-	printf("Введите имя\n");
-	scanf("%s", &data[numberOfRecords].name);
-	printf("Введите телефон\n");
-	scanf("%d", &data[numberOfRecords].number);
+	FILE * file = fopen("phonebook.txt", "a+");
+	numberOfRecords = 0;
+	while (!feof(file))
+	{
+		const int readBytes = fscanf(file, "%s%d", &data[numberOfRecords].name, &data[numberOfRecords].number);
+		if (readBytes < 0)
+		{
+			break;
+		}
+		++numberOfRecords;
+	}
+	fclose(file);
 }
 
-void printAllRecords(record *data, int numberOfRecords)
+void addRecord(Record *data, int &numberOfRecords, char *name, int number)
+{
+	strcpy(data[numberOfRecords].name, name);
+	data[numberOfRecords].number = number;
+	++numberOfRecords;
+}
+
+void deleteRecord(Record *data, int &numberOfRecords, int positionOfRecord)
+{
+	strcpy(data[positionOfRecord].name, "\0");
+	data[positionOfRecord].number = 0;
+	--numberOfRecords;
+}
+
+void printAllRecords(Record *data, int numberOfRecords)
 {
 	if (numberOfRecords == 0)
 	{
@@ -32,49 +54,33 @@ void printAllRecords(record *data, int numberOfRecords)
 	}
 }
 
-void findNumber(record *data, int numberOfRecords)
+int findNumber(Record *data, int numberOfRecords, char *name)
 {
-	printf("Введите имя\n");
-	char name[50]{};
-	scanf("%s", &name);
-	bool check = false;
 	for (int i = 0; i < numberOfRecords; ++i)
 	{
 		if (strcmp(data[i].name, name) == 0)
 		{
-			printf("Телефон: %d\n", data[i].number);
-			check = true;
-			break;
+			return data[i].number;
 		}
 	}
-	if (!check)
-	{
-		printf("Имя не найдено\n");
-	}
+	return -1;
 }
 
-void findName(record *data, int numberOfRecords)
+char *findName(Record *data, int numberOfRecords, int number)
 {
-	printf("Введите телефон\n");
-	int number = 0;
-	scanf("%d", &number);
 	bool check = false;
 	for (int i = 0; i < numberOfRecords; ++i)
 	{
 		if (data[i].number == number)
 		{
-			printf("Имя: %s\n", data[i].name);
-			check = true;
-			break;
+			return data[i].name;
 		}
 	}
-	if (!check)
-	{
-		printf("Телефон не найден\n");
-	}
+	char notFound[2] = "\0";
+	return notFound;
 }
 
-void saveData(record *data, int numberOfRecords)
+void saveData(Record *data, int numberOfRecords)
 {
 	FILE * file = fopen("phonebook.txt", "w");
 	for (int i = 0; i < numberOfRecords; ++i)
@@ -84,43 +90,98 @@ void saveData(record *data, int numberOfRecords)
 	fclose(file);
 }
 
+bool test()
+{
+	char testName[9] = "Testname";
+	int testNumber = 111;
+	Record testPhonebook[101]{};
+	int numberOfRecords = 0;
+	openFile(testPhonebook, numberOfRecords);
+	int initialNumberOfRecords = numberOfRecords;
+	addRecord(testPhonebook, numberOfRecords, testName, testNumber);
+	saveData(testPhonebook, numberOfRecords);
+	if (strcmp(findName(testPhonebook, numberOfRecords, testNumber), testName) != 0)
+	{
+		return false;
+	}
+	if (findNumber(testPhonebook, numberOfRecords, testName) != testNumber)
+	{
+		return false;
+	}
+	deleteRecord(testPhonebook, numberOfRecords, numberOfRecords - 1);
+	saveData(testPhonebook, numberOfRecords);
+	return numberOfRecords == initialNumberOfRecords;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	struct record phonebook[100]{};
-	FILE * file = fopen("phonebook.txt", "a+");
-	int numberOfRecords = 0;
-	while (!feof(file))
+	if (test())
 	{
-		const int readBytes = fscanf(file, "%s%d", &phonebook[numberOfRecords].name, &phonebook[numberOfRecords].number);
-		if (readBytes < 0)
-		{
-			break;
-		}
-		++numberOfRecords;
+		printf("Тесты пройдены успешно\n");
 	}
-	fclose(file);
-	printf("Команды:\n0 – выйти\n1 - добавить имя и телефон\n2 – распечатать все имеющиеся записи\n3 – найти телефон по имени\n4 - найти имя по телефону\n5 - сохранить текущие данные в файл\n");
+	else
+	{
+		printf("Тесты не пройдены\n");
+		return 1;
+	}
+	Record phonebook[100]{};
+	int numberOfRecords = 0;
+	openFile(phonebook, numberOfRecords);
+	printf("Команды:\n");
+	printf("0 – выйти\n");
+	printf("1 - добавить имя и телефон\n");
+	printf("2 – распечатать все имеющиеся записи\n");
+	printf("3 – найти телефон по имени\n");
+	printf("4 - найти имя по телефону\n");
+	printf("5 - сохранить текущие данные в файл\n");
 	int command = -1;
 	while (command != 0)
 	{
 		printf("Введите команду\n");
 		scanf("%d", &command);
+		char name[50]{};
+		int number = 0;
 		switch (command)
 		{
 		case 1:
-			addRecord(phonebook, numberOfRecords);
-			++numberOfRecords;
+			printf("Введите имя\n");
+			scanf("%s", &name);
+			printf("Введите телефон\n");
+			scanf("%d", &number);
+			addRecord(phonebook, numberOfRecords, name, number);
 			break;
 		case 2:
 			printAllRecords(phonebook, numberOfRecords);
 			break;
 		case 3:
-			findNumber(phonebook, numberOfRecords);
-			break;
+			printf("Введите имя\n");
+			scanf("%s", &name);
+			number = findNumber(phonebook, numberOfRecords, name);
+			if (number != -1)
+			{
+				printf("Телефон: %d\n", number);
+				break;
+			}
+			else
+			{
+				printf("Имя не найдено\n");
+				break;
+			}
 		case 4:
-			findName(phonebook, numberOfRecords);
-			break;
+			printf("Введите телефон\n");
+			scanf("%d", &number);
+			strcpy(name, findName(phonebook, numberOfRecords, number));
+			if (strcmp(name, "\0") != 0)
+			{
+				printf("Имя: %s\n", name);
+				break;
+			}
+			else
+			{
+				printf("Телефон не найден\n");
+				break;
+			}
 		case 5:
 			saveData(phonebook, numberOfRecords);
 			break;
