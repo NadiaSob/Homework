@@ -5,7 +5,7 @@ struct Node;
 
 struct List
 {
-	Node *tail = nullptr;
+	Node *head = nullptr;
 	int length = 0;
 };
 
@@ -23,7 +23,7 @@ List *createList()
 
 bool isEmpty(List *list)
 {
-	return list->tail == nullptr;
+	return list->head == nullptr;
 }
 
 void addNode(List *list, int data)
@@ -31,10 +31,10 @@ void addNode(List *list, int data)
 	auto newNode = new Node{ data, list->length + 1, nullptr };
 	if (isEmpty(list))
 	{
-		list->tail = newNode;
+		list->head = newNode;
 		return;
 	}
-	Node *nextNode = list->tail;
+	Node *nextNode = list->head;
 	Node *prevNode = nullptr;
 	while (nextNode != nullptr && newNode->data > nextNode->data)
 	{
@@ -43,22 +43,22 @@ void addNode(List *list, int data)
 		prevNode = nextNode;
 		nextNode = prevNode->next;
 	}
-	if (nextNode != list->tail)
+	if (nextNode != list->head)
 	{
 		newNode->next = nextNode;
 		prevNode->next = newNode;
 	}
 	else
 	{
-		newNode->next = list->tail;
-		list->tail = newNode;
+		newNode->next = list->head;
+		list->head = newNode;
 	}
 	--list->length;
 }
 
 void deleteNode(List *list, int data)
 {
-	Node *nodeToDelete = list->tail;
+	Node *nodeToDelete = list->head;
 	Node *prevNode = nullptr;
 	while (nodeToDelete->data != data && nodeToDelete->next != nullptr)
 	{
@@ -70,13 +70,13 @@ void deleteNode(List *list, int data)
 		printf("Value is not found\n");
 		return;
 	}
-	if (nodeToDelete != list->tail)
+	if (nodeToDelete != list->head)
 	{
 		prevNode->next = nodeToDelete->next;
 	}
 	else
 	{
-		list->tail = nodeToDelete->next;
+		list->head = nodeToDelete->next;
 	}
 	delete nodeToDelete;
 	--list->length;
@@ -90,8 +90,8 @@ void printList(List *list)
 		printf("The list is empty\n");
 		return;
 	}
-	Node *nodeToPrint = list->tail;
-	Node *prevNode = list->tail;
+	Node *nodeToPrint = list->head;
+	Node *prevNode = list->head;
 	if (nodeToPrint->next == nullptr)
 	{
 		printf("%d \n", nodeToPrint->data);
@@ -115,7 +115,7 @@ bool test()
 	addNode(list, 0);
 	addNode(list, 1);
 	deleteNode(list, 4);
-	Node *nodeForTest = list->tail;
+	Node *nodeForTest = list->head;
 	for (int i = 0; i < list->length; ++i)
 	{
 		if (nodeForTest > nodeForTest->next || nodeForTest->data == 4)
