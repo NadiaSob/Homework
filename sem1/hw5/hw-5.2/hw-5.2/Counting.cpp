@@ -22,7 +22,9 @@ int counting(int numberOfWarriors, int warriorToKill)
 		}
 		++count;
 	}
-	return dataOfCurrentNode(list);
+	int lastWarrior = dataOfCurrentNode(list);
+	deleteList(list);
+	return lastWarrior;
 }
 
 bool test()

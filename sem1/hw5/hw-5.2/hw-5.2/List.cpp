@@ -77,3 +77,11 @@ int dataOfCurrentNode(List *list)
 {
 	return list->currentNode->data;
 }
+
+void deleteList(List *list)
+{
+	while (!isEmpty(list))
+	{
+		deleteCurrentNode(list);
+	}
+}

@@ -24,3 +24,6 @@ void deleteCurrentNode(List *list);
 
 //Returns data of the current node
 int dataOfCurrentNode(List *list);
+
+//Deletes the list
+void deleteList(List *list);
