@@ -84,4 +84,5 @@ void deleteList(List *list)
 	{
 		deleteCurrentNode(list);
 	}
+	delete list;
 }
