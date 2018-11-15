@@ -85,12 +85,13 @@ void deleteNode(List *list, int data)
 
 void deleteList(List *list)
 {
-	for (int i = 0; i < list->length; ++i)
+	while (!isEmpty(list))
 	{
 		Node *nodeToDelete = list->head;
 		list->head = nodeToDelete->next;
 		delete nodeToDelete;
 	}
+	delete list;
 }
 
 void printList(List *list)
