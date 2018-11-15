@@ -32,6 +32,7 @@ void addNode(List *list, int data)
 	if (isEmpty(list))
 	{
 		list->head = newNode;
+		++list->length;
 		return;
 	}
 	Node *nextNode = list->head;
@@ -53,7 +54,7 @@ void addNode(List *list, int data)
 		newNode->next = list->head;
 		list->head = newNode;
 	}
-	--list->length;
+	++list->length;
 }
 
 void deleteNode(List *list, int data)
@@ -80,7 +81,16 @@ void deleteNode(List *list, int data)
 	}
 	delete nodeToDelete;
 	--list->length;
-	return;
+}
+
+void deleteList(List *list)
+{
+	for (int i = 0; i < list->length; ++i)
+	{
+		Node *nodeToDelete = list->head;
+		list->head = nodeToDelete->next;
+		delete nodeToDelete;
+	}
 }
 
 void printList(List *list)
@@ -91,16 +101,9 @@ void printList(List *list)
 		return;
 	}
 	Node *nodeToPrint = list->head;
-	Node *prevNode = list->head;
-	if (nodeToPrint->next == nullptr)
-	{
-		printf("%d \n", nodeToPrint->data);
-		return;
-	}
-	while (prevNode->next != nullptr)
+	while (nodeToPrint != nullptr)
 	{
 		printf("%d ", nodeToPrint->data);
-		prevNode = nodeToPrint;
 		nodeToPrint = nodeToPrint->next;
 	}
 	printf("\n");
@@ -108,21 +111,25 @@ void printList(List *list)
 
 bool test()
 {
-	List *list = createList();
-	addNode(list, 4);
-	addNode(list, -5);
-	addNode(list, 8);
-	addNode(list, 0);
-	addNode(list, 1);
-	deleteNode(list, 4);
-	Node *nodeForTest = list->head;
-	for (int i = 0; i < list->length; ++i)
+	List *testList = createList();
+	addNode(testList, 4);
+	addNode(testList, -5);
+	addNode(testList, 8);
+	addNode(testList, 0);
+	addNode(testList, 1);
+	deleteNode(testList, 4);
+	Node *nodeForTest = testList->head;
+	Node *nodeForTestNext = nodeForTest->next;
+	for (int i = 0; i < testList->length - 1; ++i)
 	{
-		if (nodeForTest > nodeForTest->next || nodeForTest->data == 4)
+		if (nodeForTest->data > nodeForTestNext->data || nodeForTest->data == 4)
 		{
+			deleteList(testList);
 			return false;
 		}
 		nodeForTest = nodeForTest->next;
+		nodeForTestNext = nodeForTestNext->next;
 	}
+	deleteList(testList);
 	return true;
 }

@@ -50,5 +50,6 @@ int main()
 			break;
 		}
 	}
+	deleteList(list);
 	return 0;
 }
