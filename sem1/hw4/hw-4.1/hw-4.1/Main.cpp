@@ -17,7 +17,8 @@ int main()
 		return 1;
 	}
 
-	int firstNum = 0, secondNum = 0;
+	int firstNum = 0;
+	int secondNum = 0;
 
 	printf("¬ведите первое число\n");
 	scanf("%d", &firstNum);
