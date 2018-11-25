@@ -9,7 +9,7 @@ Stack *createStack();
 void push(Stack *stack, char data);
 
 //Deletes head of the stack
-int pop(Stack *stack);
+char pop(Stack *stack);
 
 //Checkes if stack is empty
 bool isEmpty(Stack *stack);

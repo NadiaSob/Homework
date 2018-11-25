@@ -29,6 +29,7 @@ bool checkingBracketBalance(char *string)
 		{
 			if (isEmpty(stack))
 			{
+				deleteStack(stack);
 				return false;
 			}
 			else
@@ -36,6 +37,7 @@ bool checkingBracketBalance(char *string)
 				char temp = findSuitableOpeningBracket(string[i]);
 				if (temp != pop(stack))
 				{
+					deleteStack(stack);
 					return false;
 				}
 			}

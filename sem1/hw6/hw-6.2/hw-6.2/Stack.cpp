@@ -25,7 +25,7 @@ void push(Stack *stack, char data)
 	stack->head = newElement;
 }
 
-int pop(Stack *stack)
+char pop(Stack *stack)
 {
 	if (stack->head == nullptr)
 	{
