@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "List.h"
+#include "MergeSort.h"
 
 void openFile(List *list)
 {
