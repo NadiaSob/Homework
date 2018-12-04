@@ -105,28 +105,22 @@ void add(Tree *tree, int const key, string string)
 
 Node *addNode(Node *node, int const key, string string)
 {
-	if (node->key > key && node->leftChild != nullptr)
+	if (node == nullptr)
 	{
-		addNode(node->leftChild, key, string);
+		return new Node{ key, string, 0, nullptr, nullptr };
 	}
-	else if (node->key < key && node->rightChild != nullptr)
+	else if (node->key > key)
 	{
-		addNode(node->rightChild, key, string);
+		node->leftChild = addNode(node->leftChild, key, string);
+	}
+	else if (node->key < key)
+	{
+		node->rightChild = addNode(node->rightChild, key, string);
 	}
 	else if (node->key == key)
 	{
 		node->string = string;
-	}
-	else
-	{
-		if (node->key > key)
-		{
-			node->leftChild = new Node{ key, string, 0, nullptr, nullptr };
-		}
-		else
-		{
-			node->rightChild = new Node{ key, string, 0, nullptr, nullptr };
-		}
+		return node;
 	}
 	return balance(node);
 }
@@ -175,19 +169,19 @@ bool deleteNode(Tree *tree, int const key)
 	{
 		return false;
 	}
-	deleteNodeRecursion(tree->head, key);
+	tree->head = deleteNodeRecursion(tree->head, key);
 	return true;
 }
 
-void deleteNodeRecursion(Node *&current, int key)
+Node *deleteNodeRecursion(Node *current, int key)
 {
 	if (current->key > key)
 	{
-		deleteNodeRecursion(current->leftChild, key);
+		current->leftChild = deleteNodeRecursion(current->leftChild, key);
 	}
 	else if (current->key < key)
 	{
-		deleteNodeRecursion(current->rightChild, key);
+		current->rightChild = deleteNodeRecursion(current->rightChild, key);
 	}
 	else
 	{
@@ -196,30 +190,31 @@ void deleteNodeRecursion(Node *&current, int key)
 			auto *temp = current;
 			current = nullptr;
 			delete temp;
-			return;
+			return current;
 		}
 		else if (current->leftChild == nullptr && current->rightChild != nullptr)
 		{
 			auto *temp = current;
 			current = current->rightChild;
 			delete temp;
-			return;
+			return current;
 		}
 		else if (current->leftChild != nullptr && current->rightChild == nullptr)
 		{
 			auto *temp = current;
 			current = current->leftChild;
 			delete temp;
-			return;
+			return current;
 		}
 		else
 		{
 			current->key = maximum(current)->key;
 			current->string = maximum(current)->string;
 			deleteNodeRecursion(current->leftChild, current->key);
+			return current;
 		}
 	}
-	balance(current);
+	return balance(current);
 }
 
 Node *maximum(Node *current)
@@ -284,4 +279,66 @@ void deleteTreeRecursion(Node *nodeToDelete)
 		deleteTreeRecursion(nodeToDelete->rightChild);
 		delete nodeToDelete;
 	}
+}
+
+bool test()
+{
+	Tree *testTree = createTree();
+
+	add(testTree, 5, "e");
+	add(testTree, 2, "b");
+	add(testTree, 6, "f");
+	add(testTree, 1, "a");
+	add(testTree, 3, "c");
+	add(testTree, 4, "d");
+	add(testTree, 7, "g");
+
+	Node *current = testTree->head;
+
+	if (current->key != 3 || current->leftChild->key != 2 || current->rightChild->key != 5)
+	{
+		deleteTree(testTree);
+		return false;
+	}
+	current = current->rightChild;
+	if (current->leftChild->key != 4 || current->rightChild->key != 6)
+	{
+		deleteTree(testTree);
+		return false;
+	}
+	current = testTree->head->leftChild;
+	if (current->leftChild->key != 1)
+	{
+		deleteTree(testTree);
+		return false;
+	}
+
+	add(testTree, 3, "abc");
+
+	if (findNode(testTree, 3) != "abc" || findNode(testTree, 5) != "e")
+	{
+		deleteTree(testTree);
+		return false;
+	}
+
+	deleteNode(testTree, 2);
+
+	current = testTree->head;
+	if (current->key != 5 || current->leftChild->key != 3 || current->rightChild->key != 6)
+	{
+		deleteTree(testTree);
+		return false;
+	}
+
+	current = current->leftChild;
+	if (current->leftChild->key != 1 || current->rightChild->key != 4)
+	{
+		deleteTree(testTree);
+		return false;
+	}
+
+	current = testTree->head->rightChild;
+	bool temp = current->rightChild->key == 7 && !exists(testTree, 2);
+	deleteTree(testTree);
+	return temp;
 }

@@ -23,7 +23,7 @@ std::string findNode(Tree *tree, int const key);
 bool deleteNode(Tree *tree, int const key);
 
 //Used in function deleteNode
-void deleteNodeRecursion(Node *&current, int data);
+Node *deleteNodeRecursion(Node *current, int data);
 
 //Finds maximum of the left subtree
 Node *maximum(Node *current);
@@ -36,3 +36,6 @@ void deleteTree(Tree *tree);
 
 //Used in function deleteTree
 void deleteTreeRecursion(Node *nodeToDelete);
+
+//Tests AVL-tree functions
+bool test();

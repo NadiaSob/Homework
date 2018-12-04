@@ -7,16 +7,24 @@ using namespace std;
 
 int main()
 {
-	//tests
+	if (test())
+	{
+		cout << "Tests passed" << endl;
+	}
+	else
+	{
+		cout << "Tests failed" << endl;
+		return 1;
+	}
 
 	Tree *avlTree = createTree();
 
 	cout << "Commands:" << endl;
 	cout << "0 - exit" << endl;
-	cout << "1 - add value in the tree" << endl;
-	cout << "2 - find value in the tree" << endl;
-	cout << "3 - check if given key exists" << endl;
-	cout << "4 - delete value from the tree" << endl;
+	cout << "1 - add string in the tree" << endl;
+	cout << "2 - find string in the tree by its key" << endl;
+	cout << "3 - check if the key exists" << endl;
+	cout << "4 - delete string from the tree" << endl;
 
 	int command = -1;
 
