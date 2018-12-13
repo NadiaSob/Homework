@@ -29,7 +29,7 @@ void addNewNode(List *list, string string)
 	++list->length;
 }
 
-void findString(List *list, string string)
+bool findString(List *list, string string)
 {
 	Node *current = list->head;
 	while (current != nullptr)
@@ -37,11 +37,12 @@ void findString(List *list, string string)
 		if (current->word == string)
 		{
 			++current->count;
-			return;
+			return true;
 		}
 		current = current->next;
 	}
 	addNewNode(list, string);
+	return false;
 }
 
 void deleteHead(List *list)
@@ -68,5 +69,18 @@ void printList(List *list)
 	{
 		cout << nodeToPrint->word << " - " << nodeToPrint->count << endl;
 		nodeToPrint = nodeToPrint->next;
+	}
+}
+
+int countOfWord(List *list, string word)
+{
+	Node *current = list->head;
+	while (current != nullptr)
+	{
+		if (current->word == word)
+		{
+			return current->count;
+		}
+		current = current->next;
 	}
 }

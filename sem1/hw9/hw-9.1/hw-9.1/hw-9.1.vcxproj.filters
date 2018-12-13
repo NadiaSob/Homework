@@ -35,5 +35,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="text.txt" />
+    <Text Include="testText.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>

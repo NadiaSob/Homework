@@ -17,21 +17,18 @@ struct List
 //Creates new list
 List *createList();
 
-//Checks if list is empty
-bool isEmpty(List *list);
-
 //Adds new node in list
 void addNewNode(List *list, std::string string);
 
-//Finds node with given string in the list and increases count if string is found
+//Finds node with given string in the list and increases count if the string is found
 //Otherwise, adds the string in the list
-void findString(List *list, std::string string);
-
-//Deletes head of the list
-void deleteHead(List *list);
+bool findString(List *list, std::string string);
 
 //Deletes list
 void deleteList(List *list);
 
 //Prints list
 void printList(List *list);
+
+//Returns the number of times the word is found in the text
+int countOfWord(List *list, std::string word);
