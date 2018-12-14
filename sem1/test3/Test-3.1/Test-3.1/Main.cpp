@@ -1,39 +1,21 @@
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
-void insertSort(vector<int> &numbers, int first, int last)
-{
-	for (int i = first; i < last; ++i)
-	{
-		int temp = numbers[i];
-		int j = i;
-		while (j > first && temp < numbers[j - 1])
-		{
-			numbers[j] = numbers[j - 1];
-			--j;
-		}
-		numbers[j] = temp;
-	}
-}
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include "List.h"
 
 int main()
 {
-	vector<int> numbers;
+	List *list = createList();
 	int number = 1;
 	while (number != 0)
 	{
-		cin >> number;
+		scanf("%d", &number);
 		if (number != 0)
 		{
-			numbers.push_back(number);
+			addNode(list, number);
 		}
 	}
-	insertSort(numbers, 0, numbers.size());
-	for (int i = 0; i < numbers.size(); ++i)
-	{
-		cout << numbers[i] << " ";
-	}
+
+	printList(list);
+	deleteList(list);
 	return 0;
 }
