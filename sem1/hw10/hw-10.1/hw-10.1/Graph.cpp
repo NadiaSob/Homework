@@ -1,3 +1,4 @@
+#include <fstream>
 #include "Graph.h"
 
 using namespace std;
@@ -73,4 +74,91 @@ void deleteGraph(World *graph)
 		delete graph->cities[i];
 	}
 	delete graph;
+}
+
+bool test()
+{
+	ifstream file;
+	file.open("TestFile.txt");
+
+	int numberOfCities = 0;
+	file >> numberOfCities;
+	World *testWorld = createWorld(numberOfCities);
+
+	int numberOfRoads = 0;
+	file >> numberOfRoads;
+
+	for (int i = 0; i < numberOfRoads; ++i)
+	{
+		int firstCity = 0;
+		int secondCity = 0;
+		int road = 0;
+		file >> firstCity >> secondCity >> road;
+		add(testWorld, firstCity, secondCity, road);
+	}
+
+	int numberOfCapitals = 0;
+	file >> numberOfCapitals;
+
+	for (int i = 1; i <= numberOfCapitals; ++i)
+	{
+		int capital = 0;
+		file >> capital;
+		addCapital(testWorld, capital, i);
+	}
+	file.close();
+
+	expansionOfCountries(testWorld, numberOfCities, numberOfCapitals);
+
+	int resCountry1 = 2;
+	int resCountry2[5] = { 1, 3, 7, 8, 9 };
+	int resCountry3[3] = { 4, 5, 6 };
+
+	vector<int> country1;
+	vector<int> country2;
+	vector<int> country3;
+
+	for (int i = 0; i < testWorld->cities.size(); ++i)
+	{
+		if (testWorld->cities[i]->country == 1)
+		{
+			country1.push_back(i + 1);
+		}
+		if (testWorld->cities[i]->country == 2)
+		{
+			country2.push_back(i + 1);
+		}
+		if (testWorld->cities[i]->country == 3)
+		{
+			country3.push_back(i + 1);
+		}
+	}
+
+	for (int i = 0; i < country1.size(); ++i)
+	{
+		if (country1[i] != resCountry1)
+		{
+			deleteGraph(testWorld);
+			return false;
+		}
+	}
+
+	for (int i = 0; i < country2.size(); ++i)
+	{
+		if (country2[i] != resCountry2[i])
+		{
+			deleteGraph(testWorld);
+			return false;
+		}
+	}
+	for (int i = 0; i < country3.size(); ++i)
+	{
+		if (country3[i] != resCountry3[i])
+		{
+			deleteGraph(testWorld);
+			return false;
+		}
+	}
+	deleteGraph(testWorld);
+	return true;
 }

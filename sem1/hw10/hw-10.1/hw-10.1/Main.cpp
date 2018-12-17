@@ -22,6 +22,15 @@ void printWorld(World *world, int numberOfCapitals)
 
 int main()
 {
+	if (test())
+	{
+		cout << "Tests passed successfully" << endl;
+	}
+	else
+	{
+		cout << "Tests failed!" << endl;
+		return 1;
+	}
 	ifstream file;
 	file.open("Input.txt");
 

@@ -31,3 +31,6 @@ void addNewCityToCountry(World *world, int numberOfCountry, int &countOfAccessio
 
 //Deletes graph
 void deleteGraph(World *graph);
+
+//Tests graph functions
+bool test();
