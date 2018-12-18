@@ -1,30 +1,29 @@
 #include <iostream>
-#include <string>
-#include <fstream>
-#include "KMP.h"
+#include "KMP.h" 
 
 using namespace std;
 
-string openFile()
-{
-	ifstream file;
-	file.open("Text.txt");
-	string str = "";
-	getline(file, str);
-	file.close();
-	return str;
-}
-
 int main()
 {
-	//tests
+	if (test())
+	{
+		cout << "Tests passed successfully" << endl;
+	}
+	else
+	{
+		cout << "Tests failed!" << endl;
+		return 1;
+	}
 
-	string str = openFile();
+	ifstream text("Text.txt");
+
 	cout << "Enter the pattern" << endl;
 	string pattern = "";
 	cin >> pattern;
 
-	int firstOccurrence = KnuthMorrisPrattAlgorithm(str, pattern);
+	int firstOccurrence = knuthMorrisPrattAlgorithm(text, pattern);
+	text.close();
+
 	if (firstOccurrence != -1)
 	{
 		cout << "The first occurrence of pattern in the string: " << firstOccurrence << endl;
@@ -33,6 +32,5 @@ int main()
 	{
 		cout << "The pattern was not found in the string" << endl;
 	}
-
 	return 0;
 }

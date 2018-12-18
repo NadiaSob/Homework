@@ -125,6 +125,7 @@
     <ClInclude Include="KMP.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="TestFile.txt" />
     <Text Include="Text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

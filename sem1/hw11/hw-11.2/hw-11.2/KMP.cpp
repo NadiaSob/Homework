@@ -2,10 +2,10 @@
 
 using namespace std;
 
-vector<int> prefixFunction(string str)
+int *prefixFunction(string str)
 {
 	int length = str.size();
-	vector<int> pi(length);
+	int *pi = new int[length]{};
 	pi[0] = 0;
 	for (int i = 1; i < length; ++i)
 	{
@@ -23,32 +23,69 @@ vector<int> prefixFunction(string str)
 	return pi;
 }
 
-int KnuthMorrisPrattAlgorithm(string str, string pattern)
+int knuthMorrisPrattAlgorithm(ifstream &text, string pattern)
 {
-	int strLength = str.size();
 	int patternLength = pattern.size();
-	vector<int> pi(patternLength);
-	pi = prefixFunction(pattern);
+	int *pi = prefixFunction(pattern);
 
 	int count = 0;
 	int index = 0;
+	char symbol = ' ';
+	text.get(symbol);
 
-	while (index < strLength)
+	while (!text.eof())
 	{
-		while (str[index] != pattern[count] && count > 0)
+
+		while (symbol != pattern[count] && count > 0)
 		{
 			count = pi[count - 1];
 		}
-		if (str[index] == pattern[count])
+		if (symbol == pattern[count])
 		{
 			++count;
 		}
+		text.get(symbol);
 		++index;
 
 		if (count == patternLength)
 		{
-			return index - patternLength + 1;
+			delete[] pi;
+			return  index - patternLength + 1;
 		}
 	}
+	delete[] pi;
 	return -1;
+}
+
+bool test()
+{
+	ifstream testText1("TestFile.txt");
+
+	string pattern1 = "have";
+	string pattern2 = "your";
+	string pattern3 = "happy";
+
+	if (knuthMorrisPrattAlgorithm(testText1, pattern1) != 1) 
+	{
+		testText1.close();
+		return false;
+	}
+	testText1.close();
+
+	ifstream testText2("TestFile.txt");
+	if (knuthMorrisPrattAlgorithm(testText2, pattern2) != 6)
+	{
+		testText2.close();
+		return false;
+	}
+	testText2.close();
+	
+	ifstream testText3("TestFile.txt");
+	if (knuthMorrisPrattAlgorithm(testText3, pattern3) != -1)
+	{
+		testText3.close();
+		return false;
+	}
+	testText3.close();
+	return true;
 }
