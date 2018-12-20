@@ -24,6 +24,8 @@ bool isEmpty(Set *set)
 	return set->head == nullptr;
 }
 
+void addNode(Node *node, const int data);
+
 bool add(Set *set, const int data)
 {
 	if (isEmpty(set))
@@ -67,6 +69,8 @@ void addNode(Node *node, const int data)
 	}
 }
 
+void deleteNodeRecursion(Node *&current, const int data);
+
 bool deleteNode(Set *set, const int data)
 {
 	if (!exists(set, data))
@@ -75,6 +79,16 @@ bool deleteNode(Set *set, const int data)
 	}
 	deleteNodeRecursion(set->head, data);
 	return true;
+}
+
+int maximum(Node *current)
+{
+	auto *temp = current->leftChild;
+	while (temp->rightChild != nullptr)
+	{
+		temp = temp->rightChild;
+	}
+	return temp->data;
 }
 
 void deleteNodeRecursion(Node *&current, const int data)
@@ -118,16 +132,6 @@ void deleteNodeRecursion(Node *&current, const int data)
 	}
 }
 
-int maximum(Node *current)
-{
-	auto *temp = current->leftChild;
-	while (temp->rightChild != nullptr)
-	{
-		temp = temp->rightChild;
-	}
-	return temp->data;
-}
-
 bool exists(Set *set, const int data)
 {
 	if (isEmpty(set))
@@ -166,6 +170,8 @@ bool exists(Set *set, const int data)
 	}
 }
 
+void deleteSetRecursion(Node *nodeToDelete);
+
 void deleteSet(Set *set)
 {
 	deleteSetRecursion(set->head);
@@ -181,6 +187,10 @@ void deleteSetRecursion(Node *nodeToDelete)
 		delete nodeToDelete;
 	}
 }
+
+void printInAscendingOrder(Node *nodeToPrint, int *array, int &count);
+
+void printInDescendingOrder(Node *nodeToPrint, int *array, int &count);
 
 void printSet(Set *set, int *array, bool InAscendingOrder)
 {
