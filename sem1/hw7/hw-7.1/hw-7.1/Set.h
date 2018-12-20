@@ -11,22 +11,22 @@ Set *createSet();
 bool isEmpty(Set *set);
 
 //Adds new node in set
-bool add(Set *set, int const data);
+bool add(Set *set, const int data);
 
 //Used in function add
-void addNode(Node *node, int data);
+void addNode(Node *node, const int data);
 
 //Deletes node with given data
-bool deleteNode(Set *set, int const data);
+bool deleteNode(Set *set, const int data);
 
 //Used in function deleteNode
-void deleteNodeRecursion(Node *&current, int data);
+void deleteNodeRecursion(Node *&current, const int data);
 
 //Finds maximum of the left subtree
 int maximum(Node *current);
 
 //Checkes if node with given data exists
-bool exists(Set *set, int const data);
+bool exists(Set *set, const int data);
 
 //Deletes set
 void deleteSet(Set *set);

@@ -24,7 +24,7 @@ bool isEmpty(Set *set)
 	return set->head == nullptr;
 }
 
-bool add(Set *set, int const data)
+bool add(Set *set, const int data)
 {
 	if (isEmpty(set))
 	{
@@ -44,7 +44,7 @@ bool add(Set *set, int const data)
 	return true;
 }
 
-void addNode(Node *node, int data)
+void addNode(Node *node, const int data)
 {
 	if (node->data > data && node->leftChild != nullptr)
 	{
@@ -67,7 +67,7 @@ void addNode(Node *node, int data)
 	}
 }
 
-bool deleteNode(Set *set, int const data)
+bool deleteNode(Set *set, const int data)
 {
 	if (!exists(set, data))
 	{
@@ -77,7 +77,7 @@ bool deleteNode(Set *set, int const data)
 	return true;
 }
 
-void deleteNodeRecursion(Node *&current, int data)
+void deleteNodeRecursion(Node *&current, const int data)
 {
 	if (current->data > data)
 	{
@@ -128,7 +128,7 @@ int maximum(Node *current)
 	return temp->data;
 }
 
-bool exists(Set *set, int const data)
+bool exists(Set *set, const int data)
 {
 	if (isEmpty(set))
 	{
