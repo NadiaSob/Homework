@@ -5,7 +5,7 @@
 bool test()
 {
 	int size = 0;
-	ifstream file("TestInput.txt");
+	std::ifstream file("TestInput.txt");
 	file >> size;
 
 	Graph *testGraph = createGraph(size);
