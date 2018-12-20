@@ -24,6 +24,8 @@ bool isOperator(const char symbol)
 	return (symbol == '+') || (symbol == '-') || (symbol == '*') || (symbol == '/');
 }
 
+void addNode(Set *set, Node *&current, char *expression, int &index);
+
 void createParseTree(Set *set, char *expression)
 {
 	int index = 0;
@@ -46,6 +48,8 @@ void addNode(Set *set, Node *&current, char *expression, int &index)
 	}
 }
 
+void deleteSetRecursion(Node *nodeToDelete);
+
 void deleteSet(Set *set)
 {
 	deleteSetRecursion(set->head);
@@ -61,6 +65,8 @@ void deleteSetRecursion(Node *nodeToDelete)
 		delete nodeToDelete;
 	}
 }
+
+void printNode(Set *set, Node *nodeToPrint, char *string, int &index);
 
 char *printSet(Set *set)
 {
@@ -131,6 +137,8 @@ int charToInt(const char digit)
 {
 	return digit - '0';
 }
+
+int recursiveCalculation(Set *set, Node *current);
 
 int calculation(Set *set)
 {
