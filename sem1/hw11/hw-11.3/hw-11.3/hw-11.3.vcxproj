@@ -122,14 +122,17 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PrimAlgorithm.cpp" />
     <ClCompile Include="PriorityQueue.cpp" />
+    <ClCompile Include="Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h" />
     <ClInclude Include="PrimAlgorithm.h" />
     <ClInclude Include="PriorityQueue.h" />
+    <ClInclude Include="Tests.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Input.txt" />
+    <Text Include="TestInput.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

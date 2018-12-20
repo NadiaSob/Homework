@@ -2,6 +2,7 @@
 #include <fstream>
 #include "Graph.h"
 #include "PrimAlgorithm.h"
+#include "Tests.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ Graph *openFile()
 
 int main()
 {
-	/*if (test())
+	if (test())
 	{
 		cout << "Tests passed successfully" << endl;
 	}
@@ -35,7 +36,8 @@ int main()
 	{
 		cout << "Tests failed!" << endl;
 		return 1;
-	}*/
+	}
+
 	Graph *graph = openFile();
 	Graph *minSpanningTree = primAlgorithm(graph);
 

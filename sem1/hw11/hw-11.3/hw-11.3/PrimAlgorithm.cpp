@@ -17,12 +17,18 @@ Graph *primAlgorithm(Graph *graph)
 	{
 		for (int j = 0; j < graph->size; ++j)
 		{
-			if (graph->edges[node][j] != 0 && minSpanningTree->edges[node][j] == 0 && (!exists(minSpanningTree, node) || !exists(minSpanningTree, j)))
+			if (graph->edges[node][j] != 0 && minSpanningTree->edges[node][j] == 0)
 			{
 				enqueue(queue, node, j, graph->edges[node][j]);
 			}
 		}
+
 		int adjacentNode = dequeue(queue, node);
+		while (exists(minSpanningTree, node) && exists(minSpanningTree, adjacentNode))
+		{
+			adjacentNode = dequeue(queue, node);
+		}
+
 		add(minSpanningTree, node, adjacentNode, graph->edges[node][adjacentNode]);
 		add(minSpanningTree, adjacentNode, node, graph->edges[node][adjacentNode]);
 		node = adjacentNode;
