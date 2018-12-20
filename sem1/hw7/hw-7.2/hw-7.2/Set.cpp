@@ -19,7 +19,7 @@ Set *createSet()
 	return new Set;
 }
 
-bool isOperator(char symbol)
+bool isOperator(const char symbol)
 {
 	return (symbol == '+') || (symbol == '-') || (symbol == '*') || (symbol == '/');
 }
@@ -105,7 +105,7 @@ char *convertString(char *string)
 	return result;
 }
 
-int operation(char sign, int firstNum, int secondNum)
+int operation(const char sign, const int firstNum, const int secondNum)
 {
 	switch (sign)
 	{
@@ -127,7 +127,7 @@ int operation(char sign, int firstNum, int secondNum)
 	}
 }
 
-int charToInt(char digit)
+int charToInt(const char digit)
 {
 	return digit - '0';
 }
