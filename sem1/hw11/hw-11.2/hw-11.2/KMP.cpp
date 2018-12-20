@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int *prefixFunction(string str)
+int *prefixFunction(string const &str)
 {
 	int length = str.size();
 	int *pi = new int[length]{};
@@ -23,7 +23,7 @@ int *prefixFunction(string str)
 	return pi;
 }
 
-int knuthMorrisPrattAlgorithm(ifstream &text, string pattern)
+int knuthMorrisPrattAlgorithm(ifstream &text, string const &pattern)
 {
 	int patternLength = pattern.size();
 	int *pi = prefixFunction(pattern);
