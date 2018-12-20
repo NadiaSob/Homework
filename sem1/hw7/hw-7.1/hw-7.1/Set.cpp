@@ -192,14 +192,14 @@ void printInAscendingOrder(Node *nodeToPrint, int *array, int &count);
 
 void printInDescendingOrder(Node *nodeToPrint, int *array, int &count);
 
-void printSet(Set *set, int *array, bool InAscendingOrder)
+void printSet(Set *set, int *array, bool inAscendingOrder)
 {
 	if (isEmpty(set))
 	{
 		return;
 	}
 	int count = 0;
-	if (InAscendingOrder)
+	if (inAscendingOrder)
 	{
 		printInAscendingOrder(set->head, array, count);
 	}

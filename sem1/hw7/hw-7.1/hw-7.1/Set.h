@@ -23,7 +23,7 @@ bool exists(Set *set, const int data);
 void deleteSet(Set *set);
 
 //Adds set elements in array
-void printSet(Set *set, int *array, bool InAscendingOrder);
+void printSet(Set *set, int *array, bool inAscendingOrder);
 
 //Tests set functions
 bool test();

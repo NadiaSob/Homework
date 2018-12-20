@@ -74,7 +74,7 @@ int main()
 			break;
 
 		case 4:
-			printSet(tree, array, 1);
+			printSet(tree, array, true);
 			for (int i = 0; i < numberOfElements; ++i)
 			{
 				printf("%d ", array[i]);
@@ -83,7 +83,7 @@ int main()
 			break;
 
 		case 5:
-			printSet(tree, array, 0);
+			printSet(tree, array, false);
 			for (int i = 0; i < numberOfElements; ++i)
 			{
 				printf("%d ", array[i]);
