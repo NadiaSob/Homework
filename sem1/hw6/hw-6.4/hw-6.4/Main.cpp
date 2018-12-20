@@ -56,6 +56,6 @@ int main()
 		mergeSort(list, 0);
 		printList(list);
 	}
-
+	deleteList(list);
 	return 0;
 }
