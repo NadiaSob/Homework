@@ -1,4 +1,5 @@
 #include <fstream>
+#include <cmath>
 #include "HashTable.h"
 
 using namespace std;
@@ -18,7 +19,7 @@ HashTable *createHashTable()
 	return hashTable;
 }
 
-long int hashFunction(HashTable *hashTable, string string)
+long int hashFunction(HashTable *hashTable, const string string)
 {
 	const long int prime = 31;
 	int hash = 0;
@@ -31,9 +32,9 @@ long int hashFunction(HashTable *hashTable, string string)
 	return hash % hashTable->bucket.size();
 }
 
-void add(HashTable *hashTable, string string)
+void add(HashTable *hashTable, const string string)
 {
-	int hash = hashFunction(hashTable, string);
+	const int hash = abs(hashFunction(hashTable, string));
 
 	if (hashTable->bucket[hash] == nullptr)
 	{

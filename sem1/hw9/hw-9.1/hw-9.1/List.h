@@ -18,11 +18,11 @@ struct List
 List *createList();
 
 //Adds new node in list
-void addNewNode(List *list, std::string string);
+void addNewNode(List *list, const std::string string);
 
 //Finds node with given string in the list and increases count if the string is found
 //Otherwise, adds the string in the list
-bool findString(List *list, std::string string);
+bool findString(List *list, const std::string string);
 
 //Deletes list
 void deleteList(List *list);
@@ -31,4 +31,4 @@ void deleteList(List *list);
 void printList(List *list);
 
 //Returns the number of times the word is found in the text
-int countOfWord(List *list, std::string word);
+int countOfWord(List *list, const std::string word);

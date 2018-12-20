@@ -9,10 +9,10 @@ struct HashTable;
 HashTable *createHashTable();
 
 //Hash function used in hash table
-long int hashFunction(HashTable *hashTable, std::string string);
+long int hashFunction(HashTable *hashTable, const std::string string);
 
 //Adds string in hash table
-void add(HashTable *hashTable, std::string string);
+void add(HashTable *hashTable, const std::string string);
 
 //Prints hash table
 void printHashTable(HashTable *hashTable);

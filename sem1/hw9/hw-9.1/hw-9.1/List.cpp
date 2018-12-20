@@ -14,7 +14,7 @@ bool isEmpty(List *list)
 	return list->head == nullptr;
 }
 
-void addNewNode(List *list, string string)
+void addNewNode(List *list, const string string)
 {
 	Node *newNode = new Node{ string, 1, nullptr };
 	if (isEmpty(list))
@@ -29,7 +29,7 @@ void addNewNode(List *list, string string)
 	++list->length;
 }
 
-bool findString(List *list, string string)
+bool findString(List *list, const string string)
 {
 	Node *current = list->head;
 	while (current != nullptr)
@@ -72,7 +72,7 @@ void printList(List *list)
 	}
 }
 
-int countOfWord(List *list, string word)
+int countOfWord(List *list, const string word)
 {
 	Node *current = list->head;
 	while (current != nullptr)
