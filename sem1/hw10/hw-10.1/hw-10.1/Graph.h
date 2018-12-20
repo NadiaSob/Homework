@@ -24,10 +24,10 @@ void add(World *world, const int firstCity, const int secondCity, const int road
 void addCapital(World *world, const int capital, const int numberOfCountry);
 
 //Adds nearest unoccupied cities to the countries until all the cities are distributed
-void expansionOfCountries(World *world, int numberOfCities, int numberOfCapitals);
+void expansionOfCountries(World *world, const int numberOfCities, const int numberOfCapitals);
 
 //Used in expansionOfCountries function
-void addNewCityToCountry(World *world, int numberOfCountry, int &countOfAccessions);
+void addNewCityToCountry(World *world, const int numberOfCountry, int &countOfAccessions);
 
 //Deletes graph
 void deleteGraph(World *graph);

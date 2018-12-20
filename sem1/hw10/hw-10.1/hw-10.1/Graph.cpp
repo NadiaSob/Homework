@@ -26,7 +26,7 @@ void addCapital(World *world, const int capital, const int numberOfCountry)
 	world->cities[capital - 1]->country = numberOfCountry;
 }
 
-void expansionOfCountries(World *world, int numberOfCities, int numberOfCapitals)
+void expansionOfCountries(World *world, const int numberOfCities, const int numberOfCapitals)
 {
 	int countOfAccessions = 0;
 	while (countOfAccessions < numberOfCities - numberOfCapitals)
@@ -41,7 +41,7 @@ void expansionOfCountries(World *world, int numberOfCities, int numberOfCapitals
 	}
 }
 
-void addNewCityToCountry(World *world, int numberOfCountry, int &countOfAccessions)
+void addNewCityToCountry(World *world, const int numberOfCountry, int &countOfAccessions)
 {
 	int minRoad = 10000000;
 	int newCity = -1;
