@@ -16,36 +16,6 @@ bool comparison(Record record1, Record record2, bool byName)
 	}
 }
 
-void mergeSort(List *list, bool byName)
-{
-	if (list->head->next != nullptr)
-	{
-		int middle = list->length / 2;
-
-		List *list1 = createList();
-		Node *current = list->head;
-		for (int i = 1; i <= middle; ++i)
-		{
-			addNode(list1, current->record);
-			current = current->next;
-		}
-
-		List *list2 = createList();
-		for (int i = middle; i < list->length; ++i)
-		{
-			addNode(list2, current->record);
-			current = current->next;
-		}
-
-		mergeSort(list1, byName);
-		mergeSort(list2, byName);
-		mergeLists(list, list1, list2, byName);
-
-		deleteList(list1);
-		deleteList(list2);
-	}
-}
-
 void mergeLists(List *list, List *list1, List *list2, bool byName)
 {
 	while (!isEmpty(list))
@@ -88,6 +58,36 @@ void mergeLists(List *list, List *list1, List *list2, bool byName)
 		current = current->next;
 	}
 	deleteList(resList);
+}
+
+void mergeSort(List *list, bool byName)
+{
+	if (list->head->next != nullptr)
+	{
+		int middle = list->length / 2;
+
+		List *list1 = createList();
+		Node *current = list->head;
+		for (int i = 1; i <= middle; ++i)
+		{
+			addNode(list1, current->record);
+			current = current->next;
+		}
+
+		List *list2 = createList();
+		for (int i = middle; i < list->length; ++i)
+		{
+			addNode(list2, current->record);
+			current = current->next;
+		}
+
+		mergeSort(list1, byName);
+		mergeSort(list2, byName);
+		mergeLists(list, list1, list2, byName);
+
+		deleteList(list1);
+		deleteList(list2);
+	}
 }
 
 bool test()
