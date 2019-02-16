@@ -4,7 +4,7 @@ namespace hw1._3
 {
     class Program
     {
-        private static void quickSort(int[] array, int first, int last)
+        private static void QuickSort(int[] array, int first, int last)
         {
             var left = first;
             var right = last;
@@ -30,11 +30,11 @@ namespace hw1._3
             }
             if (first < right)
             {
-                quickSort(array, first, right);
+                QuickSort(array, first, right);
             }
             if (last > left)
             {
-                quickSort(array, left, last);
+                QuickSort(array, left, last);
             }
         }
 
@@ -52,7 +52,7 @@ namespace hw1._3
                 array[i] = int.Parse(temp[i]);
             }
 
-            quickSort(array, 0, size - 1);
+            QuickSort(array, 0, size - 1);
 
             Console.WriteLine("Sorted array:");
             foreach (var element in array)
