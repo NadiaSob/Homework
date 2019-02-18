@@ -4,7 +4,7 @@ namespace hw1._4
 {
     class Program
     {
-        public static int [,]ArrayFilling(int size)
+        private static int[,] ArrayFilling(int size)
         {
             int[,] randomArray = new int[size, size];
             Random rnd = new Random();
@@ -18,7 +18,7 @@ namespace hw1._4
             return randomArray;
         }
 
-        public static void ArrayPrinting(int[,] array)
+        private static void ArrayPrinting(int[,] array)
         {
             var size = array.GetLength(0);
             for (var i = 0; i < size; ++i)
@@ -31,7 +31,7 @@ namespace hw1._4
             }
         }
 
-        public static void ArraySpiralPrinting(int[,] array)
+        private static void ArraySpiralPrinting(int[,] array)
         {
             var size = array.GetLength(0);
             if (size == 1)
