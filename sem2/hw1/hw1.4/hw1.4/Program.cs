@@ -7,12 +7,12 @@ namespace hw1._4
         private static int[,] ArrayFilling(int size)
         {
             int[,] randomArray = new int[size, size];
-            Random rnd = new Random();
+            var rand = new Random();
             for (var i = 0; i < size; ++i)
             {
                 for (var j = 0; j < size; ++j)
                 {
-                    randomArray[i, j] = rnd.Next(0, 30);
+                    randomArray[i, j] = rand.Next(0, 30);
                 }
             }
             return randomArray;
