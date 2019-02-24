@@ -6,7 +6,7 @@ namespace hw1._4
     {
         private static int[,] ArrayFilling(int size)
         {
-            int[,] randomArray = new int[size, size];
+            var randomArray = new int[size, size];
             var rand = new Random();
             for (var i = 0; i < size; ++i)
             {
@@ -101,7 +101,7 @@ namespace hw1._4
                 return;
             }
 
-            int[,] array = ArrayFilling(size);
+            var array = ArrayFilling(size);
 
             Console.WriteLine("The array:");
             ArrayPrinting(array);
