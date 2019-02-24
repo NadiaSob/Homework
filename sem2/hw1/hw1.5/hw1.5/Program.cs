@@ -6,7 +6,7 @@ namespace hw1._5
     {
         private static int[,] ArrayFilling(int length, int height)
         {
-            int[,] randomArray = new int[height, length];
+            var randomArray = new int[height, length];
             var rand = new Random();
             for (var i = 0; i < height; ++i)
             {
@@ -78,7 +78,7 @@ namespace hw1._5
             Console.WriteLine("Enter the height of the array");
             var height = int.Parse(Console.ReadLine());
 
-            int[,] array = ArrayFilling(length, height);
+            var array = ArrayFilling(length, height);
 
             Console.WriteLine("The array:");
             ArrayPrinting(array);
