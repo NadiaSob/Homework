@@ -115,7 +115,6 @@ namespace hw2._1
                     Console.WriteLine("The command you entered is incorrect");
                     break;
             }
-            return;
         }
     }
 }
