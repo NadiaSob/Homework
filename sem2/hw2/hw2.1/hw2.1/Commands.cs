@@ -18,9 +18,9 @@ namespace hw2._1
             Console.WriteLine("Enter the command");
         }
 
-        bool IsCorrectPositionToAdd(List list, int position) => position > 0 && position <= list.size + 1;
+        bool IsCorrectPositionToAdd(List list, int position) => position > 0 && position <= list.Size + 1;
 
-        bool IsCorrectPosition(List list, int position) => position > 0 && position <= list.size;
+        bool IsCorrectPosition(List list, int position) => position > 0 && position <= list.Size;
 
         public void CommandExecution(List list, int command)
         {
@@ -59,7 +59,7 @@ namespace hw2._1
                     break;
 
                 case 3:
-                    Console.WriteLine($"Size of the list is {list.size}");
+                    Console.WriteLine($"Size of the list is {list.Size}");
                     break;
 
                 case 4:

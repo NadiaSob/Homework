@@ -6,18 +6,18 @@ namespace hw2._1
     {
         private class Node
         {
-            public int data { get; set; }
-            public Node next { get; set; }
+            public int Data { get; set; }
+            public Node Next { get; set; }
 
             public Node(int data, Node next)
             {
-                this.data = data;
-                this.next = next;
+                Data = data;
+                Next = next;
             }
         }
 
         private Node head;
-        public int size { get; private set; }
+        public int Size { get; private set; }
 
         public List()
         {
@@ -30,7 +30,7 @@ namespace hw2._1
             Node current = head;
             for (var i = 1; i < position; ++i)
             {
-                current = current.next;
+                current = current.Next;
             }
             return current;
         }
@@ -41,42 +41,42 @@ namespace hw2._1
 
             if (position == 1)
             {
-                newNode.next = head;
+                newNode.Next = head;
                 head = newNode;
             }
             else
             {
                 var current = GetNode(position - 1);
-                newNode.next = current.next;
-                current.next = newNode;
+                newNode.Next = current.Next;
+                current.Next = newNode;
             }
-            ++size;
+            ++Size;
         }
 
         public void DeleteElement(int position)
         {
             if (position == 1)
             {
-                head = head.next;
+                head = head.Next;
             }
             else
             {
                 Node current = GetNode(position - 1);
-                current.next = current.next.next;
+                current.Next = current.Next.Next;
             }
-            --size;
+            --Size;
         }
 
         public int GetData(int position)
         {
             Node node = GetNode(position);
-            return node.data;
+            return node.Data;
         }
 
         public void SetData(int position, int data)
         {
             Node node = GetNode(position);
-            node.data = data;
+            node.Data = data;
         }
 
         public void PrintList()
@@ -84,8 +84,8 @@ namespace hw2._1
             Node current = head;
             while(current != null)
             {
-                Console.Write($"{current.data} ");
-                current = current.next;
+                Console.Write($"{current.Data} ");
+                current = current.Next;
             }
             Console.WriteLine();
         }
