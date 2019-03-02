@@ -18,10 +18,6 @@ namespace hw2._1
             Console.WriteLine("Enter the command");
         }
 
-        bool IsCorrectPositionToAdd(List list, int position) => position > 0 && position <= list.Size + 1;
-
-        bool IsCorrectPosition(List list, int position) => position > 0 && position <= list.Size;
-
         public void CommandExecution(List list, int command)
         {
             var data = 0;
@@ -34,28 +30,23 @@ namespace hw2._1
                 case 1:
                     Console.WriteLine("Enter the position of element in list");
                     position = int.Parse(Console.ReadLine());
-                    if (!IsCorrectPositionToAdd(list, position))
-                    {
-                        Console.WriteLine("The position you entered is incorrect");
-                        break;
-                    }
 
                     Console.WriteLine("Enter the data");
                     data = int.Parse(Console.ReadLine());
 
-                    list.AddElement(position, data);
+                    if (!list.AddElement(position, data))
+                    {
+                        Console.WriteLine("The position you entered is incorrect");
+                    }
                     break;
 
                 case 2:
                     Console.WriteLine("Enter the position of element you'd like to delete");
                     position = int.Parse(Console.ReadLine());
-                    if (!IsCorrectPosition(list, position))
+                    if (!list.DeleteElement(position))
                     {
                         Console.WriteLine("The position you entered is incorrect");
-                        break;
                     }
-
-                    list.DeleteElement(position);
                     break;
 
                 case 3:
@@ -76,28 +67,30 @@ namespace hw2._1
                 case 5:
                     Console.WriteLine("Enter the position of element in list");
                     position = int.Parse(Console.ReadLine());
-                    if (!IsCorrectPosition(list, position))
+
+                    data = list.GetData(position);
+
+                    if (data == ' ')
                     {
                         Console.WriteLine("The position you entered is incorrect");
-                        break;
                     }
-
-                    Console.WriteLine($"Data of the element in position {position} is {list.GetData(position)}");
+                    else
+                    {
+                        Console.WriteLine($"Data of the element in position {position} is {list.GetData(position)}");
+                    }
                     break;
 
                 case 6:
                     Console.WriteLine("Enter the position of element in list");
                     position = int.Parse(Console.ReadLine());
-                    if (!IsCorrectPosition(list, position))
-                    {
-                        Console.WriteLine("The position you entered is incorrect");
-                        break;
-                    }
 
                     Console.WriteLine("Enter the data");
                     data = int.Parse(Console.ReadLine());
 
-                    list.SetData(position, data);
+                    if (!list.SetData(position, data))
+                    {
+                        Console.WriteLine("The position you entered is incorrect");
+                    }
                     break;
 
                 case 7:

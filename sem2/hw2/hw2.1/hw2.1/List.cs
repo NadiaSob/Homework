@@ -25,7 +25,11 @@ namespace hw2._1
 
         public bool IsEmpty() => head == null;
 
-        Node GetNode(int position)
+        private bool IsCorrectPositionToAdd(int position) => position > 0 && position <= Size + 1;
+
+        private bool IsCorrectPosition(int position) => position > 0 && position <= Size;
+
+        private Node GetNode(int position)
         {
             Node current = head;
             for (var i = 1; i < position; ++i)
@@ -35,8 +39,13 @@ namespace hw2._1
             return current;
         }
 
-        public void AddElement(int position, int data)
+        public bool AddElement(int position, int data)
         {
+            if (!IsCorrectPositionToAdd(position))
+            {
+                return false;
+            }
+
             var newNode = new Node(data, null);
 
             if (position == 1)
@@ -51,10 +60,16 @@ namespace hw2._1
                 current.Next = newNode;
             }
             ++Size;
+            return true;
         }
 
-        public void DeleteElement(int position)
+        public bool DeleteElement(int position)
         {
+            if (!IsCorrectPosition(position))
+            {
+                return false;
+            }
+
             if (position == 1)
             {
                 head = head.Next;
@@ -65,18 +80,29 @@ namespace hw2._1
                 current.Next = current.Next.Next;
             }
             --Size;
+            return true;
         }
 
         public int GetData(int position)
         {
+            if (!IsCorrectPosition(position))
+            {
+                return ' ';
+            }
             Node node = GetNode(position);
             return node.Data;
         }
 
-        public void SetData(int position, int data)
+        public bool SetData(int position, int data)
         {
+            if (!IsCorrectPosition(position))
+            {
+                return false;
+            }
+
             Node node = GetNode(position);
             node.Data = data;
+            return true;
         }
 
         public void PrintList()
