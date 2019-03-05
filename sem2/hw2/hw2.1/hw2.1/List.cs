@@ -2,7 +2,10 @@
 
 namespace hw2._1
 {
-    public class List
+    /// <summary>
+    /// Singly linked list, a linear collection of integer values.
+    /// </summary>
+    public class List : IList
     {
         private class Node
         {
@@ -17,12 +20,20 @@ namespace hw2._1
         }
 
         private Node head;
+
+        /// <summary>
+        /// Number of elements in list.
+        /// </summary>
         public int Size { get; private set; }
 
         public List()
         {
         }
 
+        /// <summary>
+        /// Checks if the list has no elements in it.
+        /// </summary>
+        /// <returns>True if the list is empty, else false.</returns>
         public bool IsEmpty() => head == null;
 
         private bool IsCorrectPositionToAdd(int position) => position > 0 && position <= Size + 1;
@@ -39,6 +50,12 @@ namespace hw2._1
             return current;
         }
 
+        /// <summary>
+        /// Adds new element in list by its position.
+        /// </summary>
+        /// <param name="position">Position of the element to add.</param>
+        /// <param name="data">Element to add.</param>
+        /// <returns>True if the element is added, false if the given position is incorrect.</returns>
         public bool AddElement(int position, int data)
         {
             if (!IsCorrectPositionToAdd(position))
@@ -63,6 +80,11 @@ namespace hw2._1
             return true;
         }
 
+        /// <summary>
+        /// Deletes an element from the list by its position.
+        /// </summary>
+        /// <param name="position">Position of the element to delete.</param>
+        /// <returns>True if the element is deleted, false if the given position is incorrect.</returns>
         public bool DeleteElement(int position)
         {
             if (!IsCorrectPosition(position))
@@ -83,6 +105,11 @@ namespace hw2._1
             return true;
         }
 
+        /// <summary>
+        /// Gets data of the list element by its position.
+        /// </summary>
+        /// <param name="position">Position of the element.</param>
+        /// <returns>Data of the element or ' ' if the given position is incorrect or the list is empty.</returns>
         public int GetData(int position)
         {
             if (!IsCorrectPosition(position))
@@ -93,6 +120,12 @@ namespace hw2._1
             return node.Data;
         }
 
+        /// <summary>
+        /// Sets data of the list element by its position.
+        /// </summary>
+        /// <param name="position">Position of the element.</param>
+        /// <param name="data">Data of the element.</param>
+        /// <returns>True if data is set successfully, false if the given position is incorrect.</returns>
         public bool SetData(int position, int data)
         {
             if (!IsCorrectPosition(position))
@@ -105,6 +138,9 @@ namespace hw2._1
             return true;
         }
 
+        /// <summary>
+        /// Prints the list.
+        /// </summary>
         public void PrintList()
         {
             Node current = head;

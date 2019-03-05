@@ -2,8 +2,14 @@
 
 namespace hw2._1
 {
-    class Commands
+    /// <summary>
+    /// Interaction with user and execution of commands entered by user.
+    /// </summary>
+    class Commands : ICommands
     {
+        /// <summary>
+        /// Prints commands that user can enter.
+        /// </summary>
         public void PrintCommands()
         {
             Console.WriteLine("Commands:");
@@ -18,6 +24,11 @@ namespace hw2._1
             Console.WriteLine("Enter the command");
         }
 
+        /// <summary>
+        /// Performs an action depending on the entered command.
+        /// </summary>
+        /// <param name="list">List to work with.</param>
+        /// <param name="command">Command entered by user.</param>
         public void CommandExecution(List list, int command)
         {
             var data = 0;
