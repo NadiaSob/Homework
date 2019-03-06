@@ -114,6 +114,7 @@ namespace hw2._2
             if (head.Data == data)
             {
                 head = head.Next;
+                --Size;
                 return;
             }
 
@@ -187,7 +188,7 @@ namespace hw2._2
         public bool Exists(int data)
         {
             Node current = head;
-            for(var i = 0; i < Size; ++i)
+            for (var i = 0; i < Size; ++i)
             {
                 if (current.Data == data)
                 {

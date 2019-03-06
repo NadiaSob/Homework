@@ -5,7 +5,7 @@ namespace hw2._2
     /// <summary>
     /// Hash table, data structure that is used to store keys/value pairs.
     /// </summary>
-    class HashTable : IHashTable
+    public class HashTable : IHashTable
     {
         /// <summary>
         /// Number of elements in hash table.
