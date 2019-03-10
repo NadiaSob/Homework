@@ -5,7 +5,7 @@ namespace hw2._3
     /// <summary>
     /// First-In-First-Out data container for integer elements.
     /// </summary>
-    public class Stack
+    public class Stack : IStack
     {
         private class StackElement
         {

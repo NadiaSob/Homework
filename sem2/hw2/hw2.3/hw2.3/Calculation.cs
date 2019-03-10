@@ -5,7 +5,7 @@ namespace hw2._3
     /// <summary>
     /// Methods to find the result of the given expression in postfix.
     /// </summary>
-    public class Calculation
+    public class Calculation : ICalculation
     {
         /// <summary>
         /// The expression to calculate.
