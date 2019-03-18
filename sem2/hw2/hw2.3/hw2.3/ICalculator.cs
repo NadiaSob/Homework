@@ -2,9 +2,9 @@
 
 namespace hw2._3
 {
-    interface ICalculation
+    interface ICalculator
     {
         string Expression { get; set; }
-        int CalculationProcess();
+        int Calculation(IStack stack);
     }
 }

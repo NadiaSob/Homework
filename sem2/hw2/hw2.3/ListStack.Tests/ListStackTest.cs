@@ -1,16 +1,16 @@
-﻿namespace Stack.Tests
+﻿namespace ListStack.Tests
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using hw2._3;
 
     [TestClass]
-    public class StackTest
+    public class ListStackTest
     {
         [TestInitialize]
         public void Initialize()
         {
-            stack = new Stack();
+            stack = new ListStack();
         }
 
         [TestMethod]
@@ -45,11 +45,12 @@
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void PopFromEmptyStackTest()
         {
-            Assert.AreEqual(' ', stack.Pop());
+            stack.Pop();
         }
 
-        private Stack stack;
+        private ListStack stack;
     }
 }

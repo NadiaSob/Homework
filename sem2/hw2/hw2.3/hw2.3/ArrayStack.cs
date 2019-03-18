@@ -3,23 +3,27 @@
 namespace hw2._3
 {
     /// <summary>
-    /// First-In-First-Out data container for integer elements.
+    /// First-in-first-out container for integer values.
     /// </summary>
-    public class Stack : IStack
+    public class ArrayStack : IStack
     {
-        private class StackElement
+        private const int size = 2;
+        private int[] array;
+        private int top;
+
+        /// <summary>
+        /// Creates new array stack.
+        /// </summary>
+        public ArrayStack()
         {
-            public int Data { get; set; }
-            public StackElement Next { get; set; }
+            array = new int[size];
         }
-
-        private StackElement head = null;
-
+        
         /// <summary>
         /// Checks if stack has no elements in it.
         /// </summary>
         /// <returns>True if stack is empty, else false.</returns>
-        public bool IsEmpty() => head == null;
+        public bool IsEmpty() => top == 0;
 
         /// <summary>
         /// Adds new element in the top of the stack.
@@ -27,13 +31,13 @@ namespace hw2._3
         /// <param name="data">Element to add.</param>
         public void Push(int data)
         {
-            var newElement = new StackElement()
+            if (top + 1 >= array.Length)
             {
-                Next = head,
-                Data = data
-            };
+                Array.Resize(ref array, array.Length * 2);
+            }
 
-            head = newElement;
+            ++top;
+            array[top] = data;
         }
 
         /// <summary>
@@ -44,12 +48,12 @@ namespace hw2._3
         {
             if (IsEmpty())
             {
-                return ' ';
+                throw new InvalidOperationException("Attempt to get element from the empty stack");
             }
 
-            var temp = head.Data;
-            head = head.Next;
-            return temp;
+            int result = array[top];
+            --top;
+            return result;
         }
     }
 }
