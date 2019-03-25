@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28621.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw2.3", "hw2.3\hw2.3.csproj", "{59922D93-3E59-448C-B3F3-6E3BB6F2409D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListStack.Tests", "Stack.Tests\ListStack.Tests.csproj", "{A53372A1-F119-48A3-9557-D67684F8BB05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListStack.Tests", "ListStack.Tests\ListStack.Tests.csproj", "{A53372A1-F119-48A3-9557-D67684F8BB05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Tests", "Calculation.Tests\Calculator.Tests.csproj", "{22AC93E2-0165-4423-8EB9-A53886207539}"
 EndProject
