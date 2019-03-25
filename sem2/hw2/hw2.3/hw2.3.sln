@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw2.3", "hw2.3\hw2.3.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListStack.Tests", "ListStack.Tests\ListStack.Tests.csproj", "{A53372A1-F119-48A3-9557-D67684F8BB05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Tests", "Calculation.Tests\Calculator.Tests.csproj", "{22AC93E2-0165-4423-8EB9-A53886207539}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Tests", "Calculator.Tests\Calculator.Tests.csproj", "{22AC93E2-0165-4423-8EB9-A53886207539}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayStack.Tests", "ArrayStack.Tests\ArrayStack.Tests.csproj", "{F3BD3EBA-ED4C-467C-9CD5-65B1C958245D}"
 EndProject
