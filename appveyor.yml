@@ -1,7 +1,12 @@
 image: Visual Studio 2017
 
-before_build:
-  - nuget restore sem2/hw2/hw2.3/hw2.3.sln
+environment:
+  matrix:
+    - solution_path: sem2/hw2/hw2.3/hw2.3.sln
+    - solution_path: sem2/hw2/hw2.1/hw2.1.sln
 
-build:
-  project: sem2/hw2/hw2.3/hw2.3.sln
+before_build:
+  - nuget restore %solution_path%
+
+build_script:
+  - msbuild %solution_path%
