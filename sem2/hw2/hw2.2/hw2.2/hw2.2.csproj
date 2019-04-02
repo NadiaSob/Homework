@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Commands.cs" />
     <Compile Include="HashTable.cs" />
-    <Compile Include="ICommands.cs" />
     <Compile Include="IHashTable.cs" />
     <Compile Include="IList.cs" />
     <Compile Include="List.cs" />

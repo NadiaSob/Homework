@@ -7,7 +7,7 @@ namespace hw2._2
         static void Main(string[] args)
         {
             var hashTable = new HashTable();
-            Commands commands = new Commands();
+            var commands = new Commands();
             var command = 1;
 
             while (command != 0)

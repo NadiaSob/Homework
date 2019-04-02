@@ -12,7 +12,7 @@ namespace hw2._2
         /// </summary>
         public int NumberOfElements { get; private set; }
         private const int size = 200;
-        private List[] bucket = new List[size];
+        private readonly List[] bucket = new List[size];
 
         public HashTable()
         {

@@ -26,10 +26,6 @@ namespace hw2._2
         /// </summary>
         public int Size { get; private set; }
 
-        public List()
-        {
-        }
-
         /// <summary>
         /// Checks if the list has no elements in it.
         /// </summary>
