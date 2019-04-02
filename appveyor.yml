@@ -2,7 +2,6 @@ image: Visual Studio 2017
 
 environment:
   matrix:
-    - solution_path: sem2/hw2/hw2.3/hw2.3.sln
     - solution_path: sem2/hw2/hw2.1/hw2.1.sln
 
 before_build:
