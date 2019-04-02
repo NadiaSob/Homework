@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands.cs" />
-    <Compile Include="ICommands.cs" />
     <Compile Include="IList.cs" />
     <Compile Include="List.cs" />
     <Compile Include="Program.cs" />

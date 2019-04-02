@@ -7,7 +7,7 @@ namespace hw2._1
         static void Main(string[] args)
         {
             var list = new List();
-            Commands commands = new Commands();
+            var commands = new Commands();
             var command = 1;
 
             while (command != 0)

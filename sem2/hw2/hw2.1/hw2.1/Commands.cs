@@ -5,7 +5,7 @@ namespace hw2._1
     /// <summary>
     /// Interaction with user and execution of commands entered by user.
     /// </summary>
-    class Commands : ICommands
+    class Commands
     {
         /// <summary>
         /// Prints commands that user can enter.
@@ -29,36 +29,38 @@ namespace hw2._1
         /// </summary>
         /// <param name="list">List to work with.</param>
         /// <param name="command">Command entered by user.</param>
-        public void CommandExecution(List list, int command)
+        public void CommandExecution(IList list, int command)
         {
-            var data = 0;
-            var position = 0;
             switch (command)
             {
                 case 0:
                     break;
 
                 case 1:
-                    Console.WriteLine("Enter the position of element in list");
-                    position = int.Parse(Console.ReadLine());
-
-                    Console.WriteLine("Enter the data");
-                    data = int.Parse(Console.ReadLine());
-
-                    if (!list.AddElement(position, data))
                     {
-                        Console.WriteLine("The position you entered is incorrect");
+                        Console.WriteLine("Enter the position of element in list");
+                        var position = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Enter the data");
+                        var data = int.Parse(Console.ReadLine());
+
+                        if (!list.AddElement(position, data))
+                        {
+                            Console.WriteLine("The position you entered is incorrect");
+                        }
+                        break;
                     }
-                    break;
 
                 case 2:
-                    Console.WriteLine("Enter the position of element you'd like to delete");
-                    position = int.Parse(Console.ReadLine());
-                    if (!list.DeleteElement(position))
                     {
-                        Console.WriteLine("The position you entered is incorrect");
+                        Console.WriteLine("Enter the position of element you'd like to delete");
+                        var position = int.Parse(Console.ReadLine());
+                        if (!list.DeleteElement(position))
+                        {
+                            Console.WriteLine("The position you entered is incorrect");
+                        }
+                        break;
                     }
-                    break;
 
                 case 3:
                     Console.WriteLine($"Size of the list is {list.Size}");
@@ -76,33 +78,37 @@ namespace hw2._1
                     break;
 
                 case 5:
-                    Console.WriteLine("Enter the position of element in list");
-                    position = int.Parse(Console.ReadLine());
-
-                    data = list.GetData(position);
-
-                    if (data == ' ')
                     {
-                        Console.WriteLine("The position you entered is incorrect");
+                        Console.WriteLine("Enter the position of element in list");
+                        var position = int.Parse(Console.ReadLine());
+
+                        var data = list.GetData(position);
+
+                        if (data == ' ')
+                        {
+                            Console.WriteLine("The position you entered is incorrect");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Data of the element in position {position} is {list.GetData(position)}");
+                        }
+                        break;
                     }
-                    else
-                    {
-                        Console.WriteLine($"Data of the element in position {position} is {list.GetData(position)}");
-                    }
-                    break;
 
                 case 6:
-                    Console.WriteLine("Enter the position of element in list");
-                    position = int.Parse(Console.ReadLine());
-
-                    Console.WriteLine("Enter the data");
-                    data = int.Parse(Console.ReadLine());
-
-                    if (!list.SetData(position, data))
                     {
-                        Console.WriteLine("The position you entered is incorrect");
+                        Console.WriteLine("Enter the position of element in list");
+                        var position = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Enter the data");
+                        var data = int.Parse(Console.ReadLine());
+
+                        if (!list.SetData(position, data))
+                        {
+                            Console.WriteLine("The position you entered is incorrect");
+                        }
+                        break;
                     }
-                    break;
 
                 case 7:
                     if (list.IsEmpty())
