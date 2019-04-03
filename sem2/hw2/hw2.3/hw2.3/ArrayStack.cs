@@ -43,7 +43,7 @@ namespace hw2._3
         /// <summary>
         /// Gets element from a top of the stack and removes it.
         /// </summary>
-        /// <returns>Element that was on the top of the stack or ' ' if it is empty.</returns>
+        /// <returns>Element that was on the top of the stack.</returns>
         public int Pop()
         {
             if (IsEmpty())

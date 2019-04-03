@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="ArrayStack.cs" />
     <Compile Include="Calculator.cs" />
-    <Compile Include="ICalculator.cs" />
     <Compile Include="IStack.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
