@@ -1,7 +1,7 @@
 image: Visual Studio 2017
 
 before_build:
-  - nuget restore sem2/hw2/hw2.3/hw2.3.sln
+  - nuget restore sem2/hw3/hw3.2/hw3.2.sln
 
 build:
-  project: sem2/hw2/hw2.3/hw2.3.sln
+  project: sem2/hw3/hw3.2/hw3.2.sln
