@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace hw4._2
+namespace hw4._1
 {
     /// <summary>
     /// Data structure that finds the result of the given expression.
@@ -44,7 +44,7 @@ namespace hw4._2
             }
             else
             {
-                switch(expression[index])
+                switch (expression[index])
                 {
                     case "+":
                         current = new Addition();

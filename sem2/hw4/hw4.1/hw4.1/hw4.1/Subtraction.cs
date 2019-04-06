@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace hw4._2
+namespace hw4._1
 {
     /// <summary>
     /// Operation of subtraction.

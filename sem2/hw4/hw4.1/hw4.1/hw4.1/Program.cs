@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace hw4._2
+namespace hw4._1
 {
     class Program
     {

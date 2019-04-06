@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{39D2B253-173F-410A-9375-501FBFA8FB0B}</ProjectGuid>
+    <ProjectGuid>{2A7F250B-B1E8-4E1A-9CFB-1ECD186DAD84}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>hw4._2</RootNamespace>
-    <AssemblyName>hw4.2</AssemblyName>
+    <RootNamespace>hw4._1</RootNamespace>
+    <AssemblyName>hw4.1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InputExpression.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

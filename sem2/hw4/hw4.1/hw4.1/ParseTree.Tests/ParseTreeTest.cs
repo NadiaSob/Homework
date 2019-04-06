@@ -2,7 +2,7 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using hw4._2;
+    using hw4._1;
 
     [TestClass]
     public class ParseTreeTest
