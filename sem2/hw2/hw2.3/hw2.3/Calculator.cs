@@ -10,7 +10,7 @@ namespace hw2._3
         /// <summary>
         /// The expression to calculate.
         /// </summary>
-        public string Expression { get; set; }
+        public string Expression { get; private set; }
 
         /// <summary>
         /// Creates new calculator.
@@ -21,7 +21,7 @@ namespace hw2._3
             Expression = expression;
         }
 
-        private int Operation(string sign, int firstNum, int secondNum)
+        private int DoTheOperation(string sign, int firstNum, int secondNum)
         {
             switch (sign)
             {
@@ -42,7 +42,7 @@ namespace hw2._3
         /// Calculates the expression given in postfix.
         /// </summary>
         /// <returns>Result of calculation.</returns>
-        public int Calculation(IStack stack)
+        public int Calculate(IStack stack)
         {
             string[] expression =  Expression.Split(' ');
 
@@ -75,7 +75,7 @@ namespace hw2._3
                         throw new FormatException("The expression is entered incorrectly");
                     }
 
-                    int newNumber = Operation(symbol, firstNumber, secondNumber);
+                    int newNumber = DoTheOperation(symbol, firstNumber, secondNumber);
                     if (newNumber != ' ')
                     {
                         stack.Push(newNumber);

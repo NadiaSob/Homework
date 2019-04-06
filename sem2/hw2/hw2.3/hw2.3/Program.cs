@@ -21,12 +21,12 @@ namespace hw2._3
             if (command == 0)
             {
                 var stack = new ArrayStack();
-                result = calculation.Calculation(stack);
+                result = calculation.Calculate(stack);
             }
             else if (command == 1)
             {
                 var stack = new ListStack();
-                result = calculation.Calculation(stack);
+                result = calculation.Calculate(stack);
             }
             else
             {

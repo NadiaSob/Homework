@@ -10,260 +10,275 @@
         [TestInitialize]
         public void Initialize()
         {
-            string tempExpression = "";
-            calculator = new Calculator(tempExpression);
             listStack = new ListStack();
             arrayStack = new ArrayStack();
+        }
+
+        public void AdditionTest(IStack stack)
+        {
+            calculator = new Calculator("16 212 +");
+            Assert.AreEqual(228, calculator.Calculate(stack));
+            calculator = new Calculator("0 0 +");
+            Assert.AreEqual(0, calculator.Calculate(stack));
         }
 
         [TestMethod]
         public void AdditionUsingListStackTest()
         {
-            calculator.Expression = "2 2 +";
-            Assert.AreEqual(4, calculator.Calculation(listStack));
-            calculator.Expression = "16 212 +";
-            Assert.AreEqual(228, calculator.Calculation(listStack));
-            calculator.Expression = "0 0 +";
-            Assert.AreEqual(0, calculator.Calculation(listStack));
+            AdditionTest(listStack);
         }
 
         [TestMethod]
         public void AdditionUsingArrayStackTest()
         {
-            calculator.Expression = "2 2 +";
-            Assert.AreEqual(4, calculator.Calculation(arrayStack));
-            calculator.Expression = "16 212 +";
-            Assert.AreEqual(228, calculator.Calculation(arrayStack));
-            calculator.Expression = "0 0 +";
-            Assert.AreEqual(0, calculator.Calculation(arrayStack));
+            AdditionTest(arrayStack);
+        }
+
+        public void SubtractionTest(IStack stack)
+        {
+            calculator = new Calculator("7138 38 -");
+            Assert.AreEqual(7100, calculator.Calculate(stack));
+            calculator = new Calculator("7 0 -");
+            Assert.AreEqual(7, calculator.Calculate(stack));
         }
 
         [TestMethod]
         public void SubtractionUsingListStackTest()
         {
-            calculator.Expression = "4 1 -";
-            Assert.AreEqual(3, calculator.Calculation(listStack));
-            calculator.Expression = "7138 38 -";
-            Assert.AreEqual(7100, calculator.Calculation(listStack));
-            calculator.Expression = "7 0 -";
-            Assert.AreEqual(7, calculator.Calculation(listStack));
+            SubtractionTest(listStack);
         }
 
         [TestMethod]
         public void SubtractionUsingArrayStackTest()
         {
-            calculator.Expression = "4 1 -";
-            Assert.AreEqual(3, calculator.Calculation(arrayStack));
-            calculator.Expression = "7138 38 -";
-            Assert.AreEqual(7100, calculator.Calculation(arrayStack));
-            calculator.Expression = "7 0 -";
-            Assert.AreEqual(7, calculator.Calculation(arrayStack));
+            SubtractionTest(arrayStack);
+        }
+
+        public void MultiplicationTest(IStack stack)
+        {
+            calculator = new Calculator("10 400 *");
+            Assert.AreEqual(4000, calculator.Calculate(stack));
+            calculator = new Calculator("75 0 *");
+            Assert.AreEqual(0, calculator.Calculate(stack));
         }
 
         [TestMethod]
         public void MultiplicationUsingListStackTest()
         {
-            calculator.Expression = "5 5 *";
-            Assert.AreEqual(25, calculator.Calculation(listStack));
-            calculator.Expression = "10 400 *";
-            Assert.AreEqual(4000, calculator.Calculation(listStack));
-            calculator.Expression = "75 0 *";
-            Assert.AreEqual(0, calculator.Calculation(listStack));
+            MultiplicationTest(listStack);
         }
 
         [TestMethod]
         public void MultiplicationUsingArrayStackTest()
         {
-            calculator.Expression = "5 5 *";
-            Assert.AreEqual(25, calculator.Calculation(arrayStack));
-            calculator.Expression = "10 400 *";
-            Assert.AreEqual(4000, calculator.Calculation(arrayStack));
-            calculator.Expression = "75 0 *";
-            Assert.AreEqual(0, calculator.Calculation(arrayStack));
+            MultiplicationTest(arrayStack);
+        }
+
+        public void DivisionTest(IStack stack)
+        {
+            calculator = new Calculator("10 10 /");
+            Assert.AreEqual(1, calculator.Calculate(stack));
+            calculator = new Calculator("210 7 /");
+            Assert.AreEqual(30, calculator.Calculate(stack));
         }
 
         [TestMethod]
         public void DivisionUsingListStackTest()
         {
-            calculator.Expression = "8 4 /";
-            Assert.AreEqual(2, calculator.Calculation(listStack));
-            calculator.Expression = "10 10 /";
-            Assert.AreEqual(1, calculator.Calculation(listStack));
-            calculator.Expression = "210 7 /";
-            Assert.AreEqual(30, calculator.Calculation(listStack));
+            DivisionTest(listStack);
         }
 
         [TestMethod]
         public void DivisionUsingArrayStackTest()
         {
-            calculator.Expression = "8 4 /";
-            Assert.AreEqual(2, calculator.Calculation(arrayStack));
-            calculator.Expression = "10 10 /";
-            Assert.AreEqual(1, calculator.Calculation(arrayStack));
-            calculator.Expression = "210 7 /";
-            Assert.AreEqual(30, calculator.Calculation(arrayStack));
+            DivisionTest(arrayStack);
+        }
+
+        public void DivisionByZeroTest(IStack stack)
+        {
+            calculator = new Calculator("58 0 /");
+            var temp = calculator.Calculate(stack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
         public void DivisionByZeroUsingListStackTest()
         {
-            calculator.Expression = "58 0 /";
-            var temp = calculator.Calculation(listStack);
+            DivisionByZeroTest(listStack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
         public void DivisionByZeroUsingArrayStackTest()
         {
-            calculator.Expression = "58 0 /";
-            var temp = calculator.Calculation(arrayStack);
+            DivisionByZeroTest(arrayStack);
+        }
+
+        public void GettingNegativeResultTest(IStack stack)
+        {
+            calculator = new Calculator("3 36 -");
+            Assert.AreEqual(-33, calculator.Calculate(stack));
+            calculator = new Calculator("0 1 -");
+            Assert.AreEqual(-1, calculator.Calculate(stack));
         }
 
         [TestMethod]
         public void GettingNegativeResultUsingListStackTest()
         {
-            calculator.Expression = "3 36 -";
-            Assert.AreEqual(-33, calculator.Calculation(listStack));
-            calculator.Expression = "0 1 -";
-            Assert.AreEqual(-1, calculator.Calculation(listStack));
+            GettingNegativeResultTest(listStack);
         }
 
         [TestMethod]
         public void GettingNegativeResultUsingArrayStackTest()
         {
-            calculator.Expression = "3 36 -";
-            Assert.AreEqual(-33, calculator.Calculation(arrayStack));
-            calculator.Expression = "0 1 -";
-            Assert.AreEqual(-1, calculator.Calculation(arrayStack));
+            GettingNegativeResultTest(arrayStack);
+        }
+
+        public void CalculationNegativeNumbersTest(IStack stack)
+        {
+            calculator = new Calculator("6 -36 +");
+            Assert.AreEqual(-30, calculator.Calculate(stack));
+            calculator = new Calculator("-55 -5 -");
+            Assert.AreEqual(-50, calculator.Calculate(stack));
+            calculator = new Calculator("-5135 -1 *");
+            Assert.AreEqual(5135, calculator.Calculate(stack));
+            calculator = new Calculator("-56 -8 /");
+            Assert.AreEqual(7, calculator.Calculate(stack));
         }
 
         [TestMethod]
         public void CalculationNegativeNumbersUsingListStackTest()
         {
-            calculator.Expression = "6 -36 +";
-            Assert.AreEqual(-30, calculator.Calculation(listStack));
-            calculator.Expression = "-55 -5 -";
-            Assert.AreEqual(-50, calculator.Calculation(listStack));
-            calculator.Expression = "-5135 -1 *";
-            Assert.AreEqual(5135, calculator.Calculation(listStack));
-            calculator.Expression = "-56 -8 /";
-            Assert.AreEqual(7, calculator.Calculation(listStack));
+            CalculationNegativeNumbersTest(listStack);
         }
 
         [TestMethod]
         public void CalculationNegativeNumbersUsingArrayStackTest()
         {
-            calculator.Expression = "6 -36 +";
-            Assert.AreEqual(-30, calculator.Calculation(arrayStack));
-            calculator.Expression = "-55 -5 -";
-            Assert.AreEqual(-50, calculator.Calculation(arrayStack));
-            calculator.Expression = "-5135 -1 *";
-            Assert.AreEqual(5135, calculator.Calculation(arrayStack));
-            calculator.Expression = "-56 -8 /";
-            Assert.AreEqual(7, calculator.Calculation(arrayStack));
+            CalculationNegativeNumbersTest(arrayStack);
+        }
+
+        public void ComplexExpressionTest(IStack stack)
+        {
+            calculator = new Calculator("9 6 - 2 1 + * 3 /");
+            Assert.AreEqual(3, calculator.Calculate(stack));
+
+            calculator = new Calculator("35 12 * 830 -411 1234 + - /");
+            Assert.AreEqual(60, calculator.Calculate(stack));
         }
 
         [TestMethod]
         public void ComplexExpressionUsingListStackTest()
         {
-            calculator.Expression = "9 6 - 2 1 + * 3 /";
-            Assert.AreEqual(3, calculator.Calculation(listStack));
-
-            calculator.Expression = "35 12 * 830 -411 1234 + - /";
-            Assert.AreEqual(60, calculator.Calculation(listStack));
+            ComplexExpressionTest(listStack);
         }
 
         [TestMethod]
         public void ComplexExpressionUsingArrayStackTest()
         {
-            calculator.Expression = "9 6 - 2 1 + * 3 /";
-            Assert.AreEqual(3, calculator.Calculation(arrayStack));
+            ComplexExpressionTest(arrayStack);
+        }
 
-            calculator.Expression = "35 12 * 830 -411 1234 + - /";
-            Assert.AreEqual(60, calculator.Calculation(arrayStack));
+        public void ExpressionWithNoOperationsTest(IStack stack)
+        {
+            calculator = new Calculator("123456");
+            Assert.AreEqual(123456, calculator.Calculate(stack));
         }
 
         [TestMethod]
         public void ExpressionWithNoOperationsUsingListStackTest()
         {
-            calculator.Expression = "123456";
-            Assert.AreEqual(123456, calculator.Calculation(listStack));
+            ExpressionWithNoOperationsTest(listStack);
         }
 
         [TestMethod]
         public void ExpressionWithNoOperationsUsingArrayStackTest()
         {
-            calculator.Expression = "123456";
-            Assert.AreEqual(123456, calculator.Calculation(arrayStack));
+            ExpressionWithNoOperationsTest(arrayStack);
+        }
+
+        public void ExpressionWithSeveralSpacesTest(IStack stack)
+        {
+            calculator = new Calculator("9  6 -    2    1 + * 3  /");
+            var temp = calculator.Calculate(stack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void ExpressionWithSeveralSpacesUsingListStackTest()
         {
-            calculator.Expression = "9  6 -    2    1 + * 3  /";
-            var temp = calculator.Calculation(listStack);
+            ExpressionWithSeveralSpacesTest(listStack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void ExpressionWithSeveralSpacesUsingArrayStackTest()
         {
-            calculator.Expression = "9  6 -    2    1 + * 3  /";
-            var temp = calculator.Calculation(arrayStack);
+            ExpressionWithSeveralSpacesTest(arrayStack);
+        }
+
+        public void ExpressionWithNoSpacesTest(IStack stack)
+        {
+            calculator = new Calculator("96-21+*3/");
+            var temp = calculator.Calculate(stack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void ExpressionWithNoSpacesUsingListStackTest()
         {
-            calculator.Expression = "96-21+*3/";
-            var temp = calculator.Calculation(listStack);
+            ExpressionWithNoSpacesTest(listStack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void ExpressionWithNoSpacesUsingArrayStackTest()
         {
-            calculator.Expression = "96-21+*3/";
-            var temp = calculator.Calculation(arrayStack);
+            ExpressionWithNoSpacesTest(arrayStack);
+        }
+
+        public void ExpressionWithWrongSymbolsTest(IStack stack)
+        {
+            calculator = new Calculator("IWantToCalculateTwoPlusTwo");
+            var temp = calculator.Calculate(stack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void ExpressionWithWrongSymbolsUsingListStackTest()
         {
-            calculator.Expression = "IWantToCalculateTwoPlusTwo";
-            var temp = calculator.Calculation(listStack);
+            ExpressionWithWrongSymbolsTest(listStack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void ExpressionWithWrongSymbolsUsingArrayStackTest()
         {
-            calculator.Expression = "IWantToCalculateTwoPlusTwo";
-            var temp = calculator.Calculation(arrayStack);
+            ExpressionWithWrongSymbolsTest(arrayStack);
+        }
+
+        public void NoInputTest(IStack stack)
+        {
+            calculator = new Calculator("");
+            var temp = calculator.Calculate(stack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void NoInputUsingListStackTest()
         {
-            calculator.Expression = "";
-            var temp = calculator.Calculation(listStack);
+            NoInputTest(listStack);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void NoInputUsingArrayStackTest()
         {
-            calculator.Expression = "";
-            var temp = calculator.Calculation(arrayStack);
+            NoInputTest(arrayStack);
         }
 
         private Calculator calculator;
-        private ListStack listStack;
-        private ArrayStack arrayStack;
+        private IStack listStack;
+        private IStack arrayStack;
     }
 }
