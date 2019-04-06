@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands.cs" />
     <Compile Include="ElementAlreadyExistsException.cs" />
     <Compile Include="ElementDoesNotExistException.cs" />
     <Compile Include="IList.cs" />

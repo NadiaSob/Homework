@@ -359,6 +359,19 @@
             DeleteElementByDataTest(uniqueList);
         }
  
+        [TestMethod]
+        public void DeleteSeveralElementsWithTheSameDataTest()
+        {
+            list.AddElement(1, "String 1");
+            list.AddElement(2, "String 2");
+            list.AddElement(3, "String 2");
+            list.AddElement(4, "String 3");
+
+            list.DeleteElementByData("String 2");
+            Assert.AreEqual("String 1", list.GetData(1));
+            Assert.AreEqual("String 3", list.GetData(2));
+        }
+
         public void DeleteNotExistingElementTest(IList testList)
         {
             testList.AddElement(1, "String");

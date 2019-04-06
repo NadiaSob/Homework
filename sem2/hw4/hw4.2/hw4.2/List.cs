@@ -3,7 +3,7 @@
 namespace hw4._2
 {
     /// <summary>
-    /// Singly linked list, a linear collection of integer values.
+    /// Singly linked list, a linear collection of string values.
     /// </summary>
     public class List : IList
     {
@@ -25,10 +25,6 @@ namespace hw4._2
         /// Number of elements in list.
         /// </summary>
         public int Size { get; private set; }
-
-        public List()
-        {
-        }
 
         /// <summary>
         /// Checks if the list has no elements in it.
@@ -102,7 +98,7 @@ namespace hw4._2
         }
 
         /// <summary>
-        /// Deletes an element from the list by its data.
+        /// Deletes all the elements with the given data from the list.
         /// </summary>
         /// <param name="data">Data of the element to delete.</param>
         public void DeleteElementByData(string data)
@@ -116,7 +112,6 @@ namespace hw4._2
             {
                 head = head.Next;
                 --Size;
-                return;
             }
 
             Node previous = head;
@@ -127,11 +122,14 @@ namespace hw4._2
                 if (current.Data == data)
                 {
                     previous.Next = current.Next;
+                    current = current.Next;
                     --Size;
-                    return;
                 }
-                previous = current;
-                current = current.Next;
+                else
+                {
+                    previous = current;
+                    current = current.Next;
+                }
             }
         }
 
