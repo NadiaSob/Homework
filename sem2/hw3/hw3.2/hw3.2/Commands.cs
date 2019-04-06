@@ -53,7 +53,7 @@ namespace hw3._2
         /// </summary>
         /// <param name="hashTable">Hash table to work with.</param>
         /// <param name="command">Command entered by user.</param>
-        public void CommandExecution(IHashTable hashTable, int command)
+        public void DoCommand(IHashTable hashTable, int command)
         {
             switch (command)
             {

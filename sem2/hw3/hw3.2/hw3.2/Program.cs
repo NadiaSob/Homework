@@ -18,7 +18,7 @@ namespace hw3._2
             {
                 commands.PrintCommands();
                 command = int.Parse(Console.ReadLine());
-                commands.CommandExecution(hashTable, command);
+                commands.DoCommand(hashTable, command);
             }
         }
     }

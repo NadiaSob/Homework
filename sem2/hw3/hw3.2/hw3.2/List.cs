@@ -3,7 +3,7 @@
 namespace hw3._2
 {
     /// <summary>
-    /// Singly linked list, a linear collection of integer values.
+    /// Singly linked list, a linear collection of string values.
     /// </summary>
     public class List : IList
     {
@@ -25,10 +25,6 @@ namespace hw3._2
         /// Number of elements in list.
         /// </summary>
         public uint Size { get; private set; }
-
-        public List()
-        {
-        }
 
         /// <summary>
         /// Checks if the list has no elements in it.
