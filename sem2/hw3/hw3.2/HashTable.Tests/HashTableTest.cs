@@ -15,187 +15,184 @@
             hashTablePJW = new HashTable(new PJWHash());
         }
 
+        public void ExistsInEmptyHashTableTest(IHashTable hashTable)
+        {
+            Assert.IsFalse(hashTable.Exists("TestString"));
+        }
+
         [TestMethod]
         public void ExistsInEmptyHashTableJenkinsTest()
         {
-            Assert.IsFalse(hashTableJenkins.Exists("TestString"));
+            ExistsInEmptyHashTableTest(hashTableJenkins);
         }
 
         [TestMethod]
         public void ExistsInEmptyHashTableFNVTest()
         {
-            Assert.IsFalse(hashTableFNV.Exists("TestString"));
+            ExistsInEmptyHashTableTest(hashTableFNV);
         }
 
         [TestMethod]
         public void ExistsInEmptyHashTablePJWTest()
         {
-            Assert.IsFalse(hashTablePJW.Exists("TestString"));
+            ExistsInEmptyHashTableTest(hashTablePJW);
+        }
+
+        public void AddAndExistsTest(IHashTable hashTable)
+        {
+            hashTable.Add("Existing string");
+
+            Assert.IsTrue(hashTable.Exists("Existing string"));
+            Assert.IsFalse(hashTable.Exists("Not existing string"));
         }
 
         [TestMethod]
         public void AddAndExistsJenkinsTest()
         {
-            hashTableJenkins.Add("Existing string");
-
-            Assert.IsTrue(hashTableJenkins.Exists("Existing string"));
-            Assert.IsFalse(hashTableJenkins.Exists("Not existing string"));
+            AddAndExistsTest(hashTableJenkins);
         }
 
         [TestMethod]
         public void AddAndExistsFNVTest()
         {
-            hashTableFNV.Add("Existing string");
-
-            Assert.IsTrue(hashTableFNV.Exists("Existing string"));
-            Assert.IsFalse(hashTableFNV.Exists("Not existing string"));
+            AddAndExistsTest(hashTableFNV);
         }
 
         [TestMethod]
         public void AddAndExistsPJWTest()
         {
-            hashTablePJW.Add("Existing string");
+            AddAndExistsTest(hashTablePJW);
+        }
 
-            Assert.IsTrue(hashTablePJW.Exists("Existing string"));
-            Assert.IsFalse(hashTablePJW.Exists("Not existing string"));
+        public void AddTheSameElementTwiceTest(IHashTable hashTable)
+        {
+            Assert.IsTrue(hashTable.Add("TestString"));
+            Assert.IsFalse(hashTable.Add("TestString"));
         }
 
         [TestMethod]
         public void AddTheSameElementTwiceJenkinsTest()
         {
-            Assert.IsTrue(hashTableJenkins.Add("TestString"));
-            Assert.IsFalse(hashTableJenkins.Add("TestString"));
+            AddTheSameElementTwiceTest(hashTableJenkins);
         }
 
         [TestMethod]
         public void AddTheSameElementTwiceFNVTest()
         {
-            Assert.IsTrue(hashTableFNV.Add("TestString"));
-            Assert.IsFalse(hashTableFNV.Add("TestString"));
+            AddTheSameElementTwiceTest(hashTableFNV);
         }
 
         [TestMethod]
         public void AddTheSameElementTwicePJWTest()
         {
-            Assert.IsTrue(hashTablePJW.Add("TestString"));
-            Assert.IsFalse(hashTablePJW.Add("TestString"));
+            AddTheSameElementTwiceTest(hashTablePJW);
+        }
+
+        public void DeleteFromEmptyHashTableTest(IHashTable hashTable)
+        {
+            Assert.IsFalse(hashTable.Delete("TestString"));
         }
 
         [TestMethod]
         public void DeleteFromEmptyHashTableJenkinsTest()
         {
-            Assert.IsFalse(hashTableJenkins.Delete("TestString"));
+            DeleteFromEmptyHashTableTest(hashTableJenkins);
         }
 
         [TestMethod]
         public void DeleteFromEmptyHashTableFNVTest()
         {
-            Assert.IsFalse(hashTableFNV.Delete("TestString"));
+            DeleteFromEmptyHashTableTest(hashTableFNV);
         }
 
         [TestMethod]
         public void DeleteFromEmptyHashTablePJWTest()
         {
-            Assert.IsFalse(hashTablePJW.Delete("TestString"));
+            DeleteFromEmptyHashTableTest(hashTablePJW);
+        }
+
+        public void DeleteTest(IHashTable hashTable)
+        {
+            hashTable.Add("TestString1");
+            hashTable.Add("TestString2");
+            hashTable.Add("TestString3");
+
+            Assert.IsTrue(hashTable.Delete("TestString1"));
+            Assert.IsFalse(hashTable.Delete("TestString1"));
+            Assert.IsTrue(hashTable.Delete("TestString3"));
+
+            Assert.IsFalse(hashTable.Exists("TestString1"));
+            Assert.IsFalse(hashTable.Exists("TestString3"));
+            Assert.IsTrue(hashTable.Exists("TestString2"));
         }
 
         [TestMethod]
         public void DeleteJenkinsTest()
         {
-            hashTableJenkins.Add("TestString1");
-            hashTableJenkins.Add("TestString2");
-            hashTableJenkins.Add("TestString3");
-
-            Assert.IsTrue(hashTableJenkins.Delete("TestString1"));
-            Assert.IsFalse(hashTableJenkins.Delete("TestString1"));
-            Assert.IsTrue(hashTableJenkins.Delete("TestString3"));
-
-            Assert.IsFalse(hashTableJenkins.Exists("TestString1"));
-            Assert.IsFalse(hashTableJenkins.Exists("TestString3"));
-            Assert.IsTrue(hashTableJenkins.Exists("TestString2"));
+            DeleteTest(hashTableJenkins);
         }
 
         [TestMethod]
         public void DeleteFNVTest()
         {
-            hashTableFNV.Add("TestString1");
-            hashTableFNV.Add("TestString2");
-            hashTableFNV.Add("TestString3");
-
-            Assert.IsTrue(hashTableFNV.Delete("TestString1"));
-            Assert.IsFalse(hashTableFNV.Delete("TestString1"));
-            Assert.IsTrue(hashTableFNV.Delete("TestString3"));
-
-            Assert.IsFalse(hashTableFNV.Exists("TestString1"));
-            Assert.IsFalse(hashTableFNV.Exists("TestString3"));
-            Assert.IsTrue(hashTableFNV.Exists("TestString2"));
+            DeleteTest(hashTableFNV);
         }
 
         [TestMethod]
         public void DeletePJWTest()
         {
-            hashTablePJW.Add("TestString1");
-            hashTablePJW.Add("TestString2");
-            hashTablePJW.Add("TestString3");
+            DeleteTest(hashTablePJW);
+        }
 
-            Assert.IsTrue(hashTablePJW.Delete("TestString1"));
-            Assert.IsFalse(hashTablePJW.Delete("TestString1"));
-            Assert.IsTrue(hashTablePJW.Delete("TestString3"));
-
-            Assert.IsFalse(hashTablePJW.Exists("TestString1"));
-            Assert.IsFalse(hashTablePJW.Exists("TestString3"));
-            Assert.IsTrue(hashTablePJW.Exists("TestString2"));
+        public void SizeOfEmptyHashTableTest(IHashTable hashTable)
+        {
+            Assert.AreEqual(0, hashTable.NumberOfElements);
         }
 
         [TestMethod]
         public void SizeOfEmptyHashTableJenkinsTest()
         {
-            Assert.AreEqual(0, hashTableJenkins.NumberOfElements);
+            SizeOfEmptyHashTableTest(hashTableJenkins);
         }
 
         [TestMethod]
         public void SizeOfEmptyHashTableFNVTest()
         {
-            Assert.AreEqual(0, hashTableFNV.NumberOfElements);
+            SizeOfEmptyHashTableTest(hashTableFNV);
         }
 
         [TestMethod]
         public void SizeOfEmptyHashTablePJWTest()
         {
-            Assert.AreEqual(0, hashTablePJW.NumberOfElements);
+            SizeOfEmptyHashTableTest(hashTablePJW);
+        }
+
+        public void SizeOfHashTableTest(IHashTable hashTable)
+        {
+            hashTable.Add("TestString 1");
+            hashTable.Add("TestString 2");
+            hashTable.Add("TestString 3");
+            hashTable.Delete("TestString 2");
+
+            Assert.AreEqual(2, hashTable.NumberOfElements);
         }
 
         [TestMethod]
         public void SizeOfHashTableJenkinsTest()
         {
-            hashTableJenkins.Add("TestString 1");
-            hashTableJenkins.Add("TestString 2");
-            hashTableJenkins.Add("TestString 3");
-            hashTableJenkins.Delete("TestString 2");
-
-            Assert.AreEqual(2, hashTableJenkins.NumberOfElements);
+            SizeOfHashTableTest(hashTableJenkins);
         }
 
         [TestMethod]
         public void SizeOfHashTableFNVTest()
         {
-            hashTableFNV.Add("TestString 1");
-            hashTableFNV.Add("TestString 2");
-            hashTableFNV.Add("TestString 3");
-            hashTableFNV.Delete("TestString 2");
-
-            Assert.AreEqual(2, hashTableFNV.NumberOfElements);
+            SizeOfEmptyHashTableTest(hashTableFNV);
         }
 
         [TestMethod]
         public void SizeOfHashTablePJWTest()
         {
-            hashTablePJW.Add("TestString 1");
-            hashTablePJW.Add("TestString 2");
-            hashTablePJW.Add("TestString 3");
-            hashTablePJW.Delete("TestString 2");
-
-            Assert.AreEqual(2, hashTablePJW.NumberOfElements);
+            SizeOfHashTableTest(hashTablePJW);
         }
 
         private HashTable hashTableJenkins;

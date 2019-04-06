@@ -5,7 +5,7 @@ namespace hw3._2
     /// <summary>
     /// Hash-Table interface.
     /// </summary>
-    interface IHashTable
+    public interface IHashTable
     {
         /// <summary>
         /// Number of elements in hash table.
