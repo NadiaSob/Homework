@@ -3,7 +3,7 @@
 namespace hw3._2
 {
     /// <summary>
-    /// List interface.
+    /// Singly linked list, a linear collection of string values.
     /// </summary>
     interface IList
     {

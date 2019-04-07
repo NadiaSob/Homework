@@ -3,7 +3,7 @@
 namespace hw3._2
 {
     /// <summary>
-    /// Hash table, data structure that is used to store keys/value pairs.
+    /// Implementation of hash table, data structure that is used to store keys/value pairs.
     /// </summary>
     public class HashTable : IHashTable
     {

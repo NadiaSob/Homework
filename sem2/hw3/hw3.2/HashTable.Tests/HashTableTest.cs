@@ -15,28 +15,16 @@
             hashTablePJW = new HashTable(new PJWHash());
         }
 
-        public void ExistsInEmptyHashTableTest(IHashTable hashTable)
-        {
-            Assert.IsFalse(hashTable.Exists("TestString"));
-        }
+        public void ExistsInEmptyHashTableTest(IHashTable hashTable) => Assert.IsFalse(hashTable.Exists("TestString"));
 
         [TestMethod]
-        public void ExistsInEmptyHashTableJenkinsTest()
-        {
-            ExistsInEmptyHashTableTest(hashTableJenkins);
-        }
+        public void ExistsInEmptyHashTableJenkinsTest() => ExistsInEmptyHashTableTest(hashTableJenkins);
 
         [TestMethod]
-        public void ExistsInEmptyHashTableFNVTest()
-        {
-            ExistsInEmptyHashTableTest(hashTableFNV);
-        }
+        public void ExistsInEmptyHashTableFNVTest() => ExistsInEmptyHashTableTest(hashTableFNV);
 
         [TestMethod]
-        public void ExistsInEmptyHashTablePJWTest()
-        {
-            ExistsInEmptyHashTableTest(hashTablePJW);
-        }
+        public void ExistsInEmptyHashTablePJWTest() => ExistsInEmptyHashTableTest(hashTablePJW);
 
         public void AddAndExistsTest(IHashTable hashTable)
         {
@@ -47,22 +35,13 @@
         }
 
         [TestMethod]
-        public void AddAndExistsJenkinsTest()
-        {
-            AddAndExistsTest(hashTableJenkins);
-        }
+        public void AddAndExistsJenkinsTest() => AddAndExistsTest(hashTableJenkins);
 
         [TestMethod]
-        public void AddAndExistsFNVTest()
-        {
-            AddAndExistsTest(hashTableFNV);
-        }
+        public void AddAndExistsFNVTest() => AddAndExistsTest(hashTableFNV);
 
         [TestMethod]
-        public void AddAndExistsPJWTest()
-        {
-            AddAndExistsTest(hashTablePJW);
-        }
+        public void AddAndExistsPJWTest() => AddAndExistsTest(hashTablePJW);
 
         public void AddTheSameElementTwiceTest(IHashTable hashTable)
         {
@@ -71,45 +50,24 @@
         }
 
         [TestMethod]
-        public void AddTheSameElementTwiceJenkinsTest()
-        {
-            AddTheSameElementTwiceTest(hashTableJenkins);
-        }
+        public void AddTheSameElementTwiceJenkinsTest() => AddTheSameElementTwiceTest(hashTableJenkins);
 
         [TestMethod]
-        public void AddTheSameElementTwiceFNVTest()
-        {
-            AddTheSameElementTwiceTest(hashTableFNV);
-        }
+        public void AddTheSameElementTwiceFNVTest() => AddTheSameElementTwiceTest(hashTableFNV);
 
         [TestMethod]
-        public void AddTheSameElementTwicePJWTest()
-        {
-            AddTheSameElementTwiceTest(hashTablePJW);
-        }
+        public void AddTheSameElementTwicePJWTest() => AddTheSameElementTwiceTest(hashTablePJW);
 
-        public void DeleteFromEmptyHashTableTest(IHashTable hashTable)
-        {
-            Assert.IsFalse(hashTable.Delete("TestString"));
-        }
+        public void DeleteFromEmptyHashTableTest(IHashTable hashTable) => Assert.IsFalse(hashTable.Delete("TestString"));
 
         [TestMethod]
-        public void DeleteFromEmptyHashTableJenkinsTest()
-        {
-            DeleteFromEmptyHashTableTest(hashTableJenkins);
-        }
+        public void DeleteFromEmptyHashTableJenkinsTest() => DeleteFromEmptyHashTableTest(hashTableJenkins);
 
         [TestMethod]
-        public void DeleteFromEmptyHashTableFNVTest()
-        {
-            DeleteFromEmptyHashTableTest(hashTableFNV);
-        }
+        public void DeleteFromEmptyHashTableFNVTest() => DeleteFromEmptyHashTableTest(hashTableFNV);
 
         [TestMethod]
-        public void DeleteFromEmptyHashTablePJWTest()
-        {
-            DeleteFromEmptyHashTableTest(hashTablePJW);
-        }
+        public void DeleteFromEmptyHashTablePJWTest() => DeleteFromEmptyHashTableTest(hashTablePJW);
 
         public void DeleteTest(IHashTable hashTable)
         {
@@ -127,45 +85,24 @@
         }
 
         [TestMethod]
-        public void DeleteJenkinsTest()
-        {
-            DeleteTest(hashTableJenkins);
-        }
+        public void DeleteJenkinsTest() => DeleteTest(hashTableJenkins);
 
         [TestMethod]
-        public void DeleteFNVTest()
-        {
-            DeleteTest(hashTableFNV);
-        }
+        public void DeleteFNVTest() => DeleteTest(hashTableFNV);
 
         [TestMethod]
-        public void DeletePJWTest()
-        {
-            DeleteTest(hashTablePJW);
-        }
+        public void DeletePJWTest() => DeleteTest(hashTablePJW);
 
-        public void SizeOfEmptyHashTableTest(IHashTable hashTable)
-        {
-            Assert.AreEqual(0, hashTable.NumberOfElements);
-        }
+        public void SizeOfEmptyHashTableTest(IHashTable hashTable) => Assert.AreEqual(0, hashTable.NumberOfElements);
 
         [TestMethod]
-        public void SizeOfEmptyHashTableJenkinsTest()
-        {
-            SizeOfEmptyHashTableTest(hashTableJenkins);
-        }
+        public void SizeOfEmptyHashTableJenkinsTest() => SizeOfEmptyHashTableTest(hashTableJenkins);
 
         [TestMethod]
-        public void SizeOfEmptyHashTableFNVTest()
-        {
-            SizeOfEmptyHashTableTest(hashTableFNV);
-        }
+        public void SizeOfEmptyHashTableFNVTest() => SizeOfEmptyHashTableTest(hashTableFNV);
 
         [TestMethod]
-        public void SizeOfEmptyHashTablePJWTest()
-        {
-            SizeOfEmptyHashTableTest(hashTablePJW);
-        }
+        public void SizeOfEmptyHashTablePJWTest() => SizeOfEmptyHashTableTest(hashTablePJW);
 
         public void SizeOfHashTableTest(IHashTable hashTable)
         {
@@ -178,22 +115,13 @@
         }
 
         [TestMethod]
-        public void SizeOfHashTableJenkinsTest()
-        {
-            SizeOfHashTableTest(hashTableJenkins);
-        }
+        public void SizeOfHashTableJenkinsTest() => SizeOfHashTableTest(hashTableJenkins);
 
         [TestMethod]
-        public void SizeOfHashTableFNVTest()
-        {
-            SizeOfEmptyHashTableTest(hashTableFNV);
-        }
+        public void SizeOfHashTableFNVTest() => SizeOfEmptyHashTableTest(hashTableFNV);
 
         [TestMethod]
-        public void SizeOfHashTablePJWTest()
-        {
-            SizeOfHashTableTest(hashTablePJW);
-        }
+        public void SizeOfHashTablePJWTest() => SizeOfHashTableTest(hashTablePJW);
 
         private HashTable hashTableJenkins;
         private HashTable hashTableFNV;

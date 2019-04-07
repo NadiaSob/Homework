@@ -3,7 +3,7 @@
 namespace hw3._2
 {
     /// <summary>
-    /// Hash function interface.
+    /// Hash function.
     /// </summary>
     public interface IHash
     {
