@@ -23,16 +23,10 @@
         }
 
         [TestMethod]
-        public void AdditionUsingListStackTest()
-        {
-            AdditionTest(listStack);
-        }
+        public void AdditionUsingListStackTest() => AdditionTest(listStack);
 
         [TestMethod]
-        public void AdditionUsingArrayStackTest()
-        {
-            AdditionTest(arrayStack);
-        }
+        public void AdditionUsingArrayStackTest() => AdditionTest(arrayStack);
 
         public void SubtractionTest(IStack stack)
         {
@@ -43,16 +37,10 @@
         }
 
         [TestMethod]
-        public void SubtractionUsingListStackTest()
-        {
-            SubtractionTest(listStack);
-        }
+        public void SubtractionUsingListStackTest() => SubtractionTest(listStack);
 
         [TestMethod]
-        public void SubtractionUsingArrayStackTest()
-        {
-            SubtractionTest(arrayStack);
-        }
+        public void SubtractionUsingArrayStackTest() => SubtractionTest(arrayStack);
 
         public void MultiplicationTest(IStack stack)
         {
@@ -63,16 +51,10 @@
         }
 
         [TestMethod]
-        public void MultiplicationUsingListStackTest()
-        {
-            MultiplicationTest(listStack);
-        }
+        public void MultiplicationUsingListStackTest() => MultiplicationTest(listStack);
 
         [TestMethod]
-        public void MultiplicationUsingArrayStackTest()
-        {
-            MultiplicationTest(arrayStack);
-        }
+        public void MultiplicationUsingArrayStackTest() => MultiplicationTest(arrayStack);
 
         public void DivisionTest(IStack stack)
         {
@@ -83,16 +65,10 @@
         }
 
         [TestMethod]
-        public void DivisionUsingListStackTest()
-        {
-            DivisionTest(listStack);
-        }
+        public void DivisionUsingListStackTest() => DivisionTest(listStack);
 
         [TestMethod]
-        public void DivisionUsingArrayStackTest()
-        {
-            DivisionTest(arrayStack);
-        }
+        public void DivisionUsingArrayStackTest() => DivisionTest(arrayStack);
 
         public void DivisionByZeroTest(IStack stack)
         {
@@ -102,17 +78,11 @@
 
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
-        public void DivisionByZeroUsingListStackTest()
-        {
-            DivisionByZeroTest(listStack);
-        }
+        public void DivisionByZeroUsingListStackTest() => DivisionByZeroTest(listStack);
 
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
-        public void DivisionByZeroUsingArrayStackTest()
-        {
-            DivisionByZeroTest(arrayStack);
-        }
+        public void DivisionByZeroUsingArrayStackTest() => DivisionByZeroTest(arrayStack);
 
         public void GettingNegativeResultTest(IStack stack)
         {
@@ -123,16 +93,10 @@
         }
 
         [TestMethod]
-        public void GettingNegativeResultUsingListStackTest()
-        {
-            GettingNegativeResultTest(listStack);
-        }
+        public void GettingNegativeResultUsingListStackTest() => GettingNegativeResultTest(listStack);
 
         [TestMethod]
-        public void GettingNegativeResultUsingArrayStackTest()
-        {
-            GettingNegativeResultTest(arrayStack);
-        }
+        public void GettingNegativeResultUsingArrayStackTest() => GettingNegativeResultTest(arrayStack);
 
         public void CalculationNegativeNumbersTest(IStack stack)
         {
@@ -147,16 +111,10 @@
         }
 
         [TestMethod]
-        public void CalculationNegativeNumbersUsingListStackTest()
-        {
-            CalculationNegativeNumbersTest(listStack);
-        }
+        public void CalculationNegativeNumbersUsingListStackTest() => CalculationNegativeNumbersTest(listStack);
 
         [TestMethod]
-        public void CalculationNegativeNumbersUsingArrayStackTest()
-        {
-            CalculationNegativeNumbersTest(arrayStack);
-        }
+        public void CalculationNegativeNumbersUsingArrayStackTest() => CalculationNegativeNumbersTest(arrayStack);
 
         public void ComplexExpressionTest(IStack stack)
         {
@@ -168,16 +126,10 @@
         }
 
         [TestMethod]
-        public void ComplexExpressionUsingListStackTest()
-        {
-            ComplexExpressionTest(listStack);
-        }
+        public void ComplexExpressionUsingListStackTest() => ComplexExpressionTest(listStack);
 
         [TestMethod]
-        public void ComplexExpressionUsingArrayStackTest()
-        {
-            ComplexExpressionTest(arrayStack);
-        }
+        public void ComplexExpressionUsingArrayStackTest() => ComplexExpressionTest(arrayStack);
 
         public void ExpressionWithNoOperationsTest(IStack stack)
         {
@@ -186,16 +138,10 @@
         }
 
         [TestMethod]
-        public void ExpressionWithNoOperationsUsingListStackTest()
-        {
-            ExpressionWithNoOperationsTest(listStack);
-        }
+        public void ExpressionWithNoOperationsUsingListStackTest() => ExpressionWithNoOperationsTest(listStack);
 
         [TestMethod]
-        public void ExpressionWithNoOperationsUsingArrayStackTest()
-        {
-            ExpressionWithNoOperationsTest(arrayStack);
-        }
+        public void ExpressionWithNoOperationsUsingArrayStackTest() => ExpressionWithNoOperationsTest(arrayStack);
 
         public void ExpressionWithSeveralSpacesTest(IStack stack)
         {
@@ -205,17 +151,11 @@
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void ExpressionWithSeveralSpacesUsingListStackTest()
-        {
-            ExpressionWithSeveralSpacesTest(listStack);
-        }
+        public void ExpressionWithSeveralSpacesUsingListStackTest() => ExpressionWithSeveralSpacesTest(listStack);
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void ExpressionWithSeveralSpacesUsingArrayStackTest()
-        {
-            ExpressionWithSeveralSpacesTest(arrayStack);
-        }
+        public void ExpressionWithSeveralSpacesUsingArrayStackTest() => ExpressionWithSeveralSpacesTest(arrayStack);
 
         public void ExpressionWithNoSpacesTest(IStack stack)
         {
@@ -225,17 +165,11 @@
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void ExpressionWithNoSpacesUsingListStackTest()
-        {
-            ExpressionWithNoSpacesTest(listStack);
-        }
+        public void ExpressionWithNoSpacesUsingListStackTest() => ExpressionWithNoSpacesTest(listStack);
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void ExpressionWithNoSpacesUsingArrayStackTest()
-        {
-            ExpressionWithNoSpacesTest(arrayStack);
-        }
+        public void ExpressionWithNoSpacesUsingArrayStackTest() => ExpressionWithNoSpacesTest(arrayStack);
 
         public void ExpressionWithWrongSymbolsTest(IStack stack)
         {
@@ -245,17 +179,11 @@
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void ExpressionWithWrongSymbolsUsingListStackTest()
-        {
-            ExpressionWithWrongSymbolsTest(listStack);
-        }
+        public void ExpressionWithWrongSymbolsUsingListStackTest() => ExpressionWithWrongSymbolsTest(listStack);
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void ExpressionWithWrongSymbolsUsingArrayStackTest()
-        {
-            ExpressionWithWrongSymbolsTest(arrayStack);
-        }
+        public void ExpressionWithWrongSymbolsUsingArrayStackTest() => ExpressionWithWrongSymbolsTest(arrayStack);
 
         public void NoInputTest(IStack stack)
         {
@@ -265,17 +193,11 @@
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void NoInputUsingListStackTest()
-        {
-            NoInputTest(listStack);
-        }
+        public void NoInputUsingListStackTest() => NoInputTest(listStack);
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void NoInputUsingArrayStackTest()
-        {
-            NoInputTest(arrayStack);
-        }
+        public void NoInputUsingArrayStackTest() => NoInputTest(arrayStack);
 
         private Calculator calculator;
         private IStack listStack;

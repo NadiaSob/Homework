@@ -3,7 +3,7 @@
 namespace hw2._3
 {
     /// <summary>
-    /// Stack interface.
+    /// First-in-first-out container for integer values.
     /// </summary>
     public interface IStack
     {

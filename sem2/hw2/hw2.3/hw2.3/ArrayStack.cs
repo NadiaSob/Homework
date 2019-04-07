@@ -3,7 +3,7 @@
 namespace hw2._3
 {
     /// <summary>
-    /// First-in-first-out container for integer values.
+    /// Implementation of stack using self-expanding array.
     /// </summary>
     public class ArrayStack : IStack
     {

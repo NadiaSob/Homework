@@ -20,16 +20,10 @@
         }
 
         [TestMethod]
-        public void IsEmptyUsingListStackTest()
-        {
-            IsEmptyTest(listStack);
-        }
+        public void IsEmptyUsingListStackTest() => IsEmptyTest(listStack);
 
         [TestMethod]
-        public void IsEmptyUsingArrayStackTest()
-        {
-            IsEmptyTest(arrayStack);
-        }
+        public void IsEmptyUsingArrayStackTest() => IsEmptyTest(arrayStack);
 
         public void PushTest(IStack stack)
         {
@@ -38,16 +32,10 @@
         }
 
         [TestMethod]
-        public void PushUsingListStackTest()
-        {
-            PushTest(listStack);
-        }
+        public void PushUsingListStackTest() => PushTest(listStack);
 
         [TestMethod]
-        public void PushUsingArrayStackTest()
-        {
-            PushTest(arrayStack);
-        }
+        public void PushUsingArrayStackTest() => PushTest(arrayStack);
 
         public void PopTest(IStack stack)
         {
@@ -57,16 +45,10 @@
         }
 
         [TestMethod]
-        public void PopUsingListStackTest()
-        {
-            PopTest(listStack);
-        }
+        public void PopUsingListStackTest() => PopTest(listStack);
 
         [TestMethod]
-        public void PopUsingArrayStackTest()
-        {
-            PopTest(arrayStack);
-        }
+        public void PopUsingArrayStackTest() => PopTest(arrayStack);
 
         public void TwoElementsPopTest(IStack stack)
         {
@@ -78,16 +60,10 @@
         }
 
         [TestMethod]
-        public void TwoElementsPopUsingListStackTest()
-        {
-            TwoElementsPopTest(listStack);
-        }
+        public void TwoElementsPopUsingListStackTest() => TwoElementsPopTest(listStack);
 
         [TestMethod]
-        public void TwoElementsPopUsingArrayStackTest()
-        {
-            TwoElementsPopTest(arrayStack);
-        }
+        public void TwoElementsPopUsingArrayStackTest() => TwoElementsPopTest(arrayStack);
 
         public void PopFromEmptyStackTest(IStack stack)
         {
@@ -96,17 +72,11 @@
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void PopFromEmptyStackUsingListStackTest()
-        {
-            PopFromEmptyStackTest(listStack);
-        }
+        public void PopFromEmptyStackUsingListStackTest() => PopFromEmptyStackTest(listStack);
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void PopFromEmptyStackUsingArrayStackTest()
-        {
-            PopFromEmptyStackTest(arrayStack);
-        }
+        public void PopFromEmptyStackUsingArrayStackTest() => PopFromEmptyStackTest(arrayStack);
 
         private ListStack listStack;
         private ArrayStack arrayStack;
