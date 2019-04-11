@@ -3,7 +3,7 @@
 namespace hw4._2
 {
     /// <summary>
-    /// List interface.
+    /// Singly linked list, a linear collection of string values.
     /// </summary>
     public interface IList
     {

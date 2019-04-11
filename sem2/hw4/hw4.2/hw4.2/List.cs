@@ -3,7 +3,7 @@
 namespace hw4._2
 {
     /// <summary>
-    /// Singly linked list, a linear collection of string values.
+    /// Implementation of singly linked list, a linear collection of string values.
     /// </summary>
     public class List : IList
     {

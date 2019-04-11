@@ -14,22 +14,13 @@
             uniqueList = new UniqueList();
         }
 
-        public void IsEmptyTest(IList testList)
-        {
-            Assert.IsTrue(testList.IsEmpty());
-        }
+        public void IsEmptyTest(IList testList) => Assert.IsTrue(testList.IsEmpty());
 
         [TestMethod]
-        public void IsEmptyListTest()
-        {
-            IsEmptyTest(list);
-        }
+        public void IsEmptyListTest() => IsEmptyTest(list);
 
         [TestMethod]
-        public void IsEmptyUniqueListTest()
-        {
-            IsEmptyTest(uniqueList);
-        }
+        public void IsEmptyUniqueListTest() => IsEmptyTest(uniqueList);
 
         public void IsNotEmptyTest(IList testList)
         {
@@ -38,16 +29,10 @@
         }
 
         [TestMethod]
-        public void IsNotEmptyListTest()
-        {
-            IsNotEmptyTest(list);
-        }
+        public void IsNotEmptyListTest() => IsNotEmptyTest(list);
 
         [TestMethod]
-        public void IsNotEmptyUniqueListTest()
-        {
-            IsNotEmptyTest(uniqueList);
-        }
+        public void IsNotEmptyUniqueListTest() => IsNotEmptyTest(uniqueList);
 
         public void GetDataFromEmptyList(IList testList)
         {
@@ -56,17 +41,11 @@
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void GetDataFromEmptyListTest()
-        {
-            GetDataFromEmptyList(list);
-        }
+        public void GetDataFromEmptyListTest() => GetDataFromEmptyList(list);
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void GetDataFromEmptyUniqueListTest()
-        {
-            GetDataFromEmptyList(uniqueList);
-        }
+        public void GetDataFromEmptyUniqueListTest() => GetDataFromEmptyList(uniqueList);
 
         public void AddElementsInAscendingOrderTest(IList testList)
         {
@@ -80,16 +59,10 @@
         }
 
         [TestMethod]
-        public void AddElementsInAscendingOrderListTest()
-        {
-            AddElementsInAscendingOrderTest(list);
-        }
+        public void AddElementsInAscendingOrderListTest() => AddElementsInAscendingOrderTest(list);
 
         [TestMethod]
-        public void AddElementsInAscendingOrderUniqueListTest()
-        {
-            AddElementsInAscendingOrderTest(uniqueList);
-        }
+        public void AddElementsInAscendingOrderUniqueListTest() => AddElementsInAscendingOrderTest(uniqueList);
 
         public void AddElementsInRandomOrderTest(IList testList)
         {
@@ -103,16 +76,10 @@
         }
 
         [TestMethod]
-        public void AddElementsInRandomOrderListTest()
-        {
-            AddElementsInRandomOrderTest(list);
-        }
+        public void AddElementsInRandomOrderListTest() => AddElementsInRandomOrderTest(list);
 
         [TestMethod]
-        public void AddElementsInRandomOrderUniqueListTest()
-        {
-            AddElementsInRandomOrderTest(uniqueList);
-        }
+        public void AddElementsInRandomOrderUniqueListTest() => AddElementsInRandomOrderTest(uniqueList);
 
         public void AddTheSameElementsTest(IList testList)
         {
@@ -124,55 +91,31 @@
         }
 
         [TestMethod]
-        public void AddTheSameElementsListTest()
-        {
-            AddTheSameElementsTest(list);
-        }
+        public void AddTheSameElementsListTest() => AddTheSameElementsTest(list);
 
         [TestMethod]
         [ExpectedException(typeof(ElementAlreadyExistsException))]
-        public void AddTheSameElementsUniqueListTest()
-        {
-            AddTheSameElementsTest(uniqueList);
-        }
+        public void AddTheSameElementsUniqueListTest() => AddTheSameElementsTest(uniqueList);
 
-        public void AddElementInIncorrectPositionTest(IList testList)
-        {
-            testList.AddElement(2, "lala");
-        }
+        public void AddElementInIncorrectPositionTest(IList testList) => testList.AddElement(2, "lala");
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void AddElementInIncorrectPositionListTest()
-        {
-            AddElementInIncorrectPositionTest(list);
-        }
+        public void AddElementInIncorrectPositionListTest() => AddElementInIncorrectPositionTest(list);
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void AddElementInIncorrectPositionUniqueListTest()
-        {
-            AddElementInIncorrectPositionTest(uniqueList);
-        }
-
-        public void SetDataInEmptyList(IList testList)
-        {
-            testList.SetData(1, "123");
-        }
+        public void AddElementInIncorrectPositionUniqueListTest() => AddElementInIncorrectPositionTest(uniqueList);
+        
+        public void SetDataInEmptyList(IList testList) => testList.SetData(1, "123");
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void SetDataInEmptyListTest()
-        {
-            SetDataInEmptyList(list);
-        }
+        public void SetDataInEmptyListTest() => SetDataInEmptyList(list);
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void SetDataInEmptyUniqueListTest()
-        {
-            SetDataInEmptyList(uniqueList);
-        }
+        public void SetDataInEmptyUniqueListTest() => SetDataInEmptyList(uniqueList);
 
         public void SetDataTest(IList testList)
         {
@@ -191,16 +134,10 @@
         }
 
         [TestMethod]
-        public void SetDataListTest()
-        {
-            SetDataTest(list);
-        }
+        public void SetDataListTest() => SetDataTest(list);
 
         [TestMethod]
-        public void SetDataUniqueListTest()
-        {
-            SetDataTest(uniqueList);
-        }
+        public void SetDataUniqueListTest() => SetDataTest(uniqueList);
 
         public void SetTheSameDataTest(IList testList)
         {
@@ -215,36 +152,21 @@
         }
 
         [TestMethod]
-        public void SetTheSameDataListTest()
-        {
-            SetTheSameDataTest(list);
-        }
+        public void SetTheSameDataListTest() => SetTheSameDataTest(list);
 
         [TestMethod]
         [ExpectedException(typeof(ElementAlreadyExistsException))]
-        public void SetTheSameDataUniqueListTest()
-        {
-            SetTheSameDataTest(uniqueList);
-        }
+        public void SetTheSameDataUniqueListTest() => SetTheSameDataTest(uniqueList);
 
-        public void DeleteByPositionFromEmptyList(IList testList)
-        {
-            testList.DeleteElementByPosition(1);
-        }
+        public void DeleteByPositionFromEmptyList(IList testList) => testList.DeleteElementByPosition(1);
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void DeleteByPositionFromEmptyListTest()
-        {
-            DeleteByPositionFromEmptyList(list);
-        }
+        public void DeleteByPositionFromEmptyListTest() => DeleteByPositionFromEmptyList(list);
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void DeleteByPositionFromEmptyUniqueListTest()
-        {
-            DeleteByPositionFromEmptyList(uniqueList);
-        }
+        public void DeleteByPositionFromEmptyUniqueListTest() => DeleteByPositionFromEmptyList(uniqueList);
 
         public void DeleteByPositionTest(IList testList)
         {
@@ -258,16 +180,10 @@
         }
 
         [TestMethod]
-        public void DeleteByPositionListTest()
-        {
-            DeleteByPositionTest(list);
-        }
+        public void DeleteByPositionListTest() => DeleteByPositionTest(list);
 
         [TestMethod]
-        public void DeleteByPositionUniqueListTest()
-        {
-            DeleteByPositionTest(uniqueList);
-        }
+        public void DeleteByPositionUniqueListTest() => DeleteByPositionTest(uniqueList);
 
         public void DeleteAllElementsTest(IList testList)
         {
@@ -283,33 +199,18 @@
         }
 
         [TestMethod]
-        public void DeleteAllElementsListTest()
-        {
-            DeleteAllElementsTest(list);
-        }
+        public void DeleteAllElementsListTest() => DeleteAllElementsTest(list);
 
         [TestMethod]
-        public void DeleteAllElementsUniqueListTest()
-        {
-            DeleteAllElementsTest(uniqueList);
-        }
+        public void DeleteAllElementsUniqueListTest() => DeleteAllElementsTest(uniqueList);
 
-        public void GetSizeOfEmptyList(IList testList)
-        {
-            Assert.AreEqual(0, testList.Size);
-        }
+        public void GetSizeOfEmptyList(IList testList) => Assert.AreEqual(0, testList.Size);
 
         [TestMethod]
-        public void GetSizeOfEmptyListTest()
-        {
-            GetSizeOfEmptyList(list);
-        }
+        public void GetSizeOfEmptyListTest() => GetSizeOfEmptyList(list);
 
         [TestMethod]
-        public void GetSizeOfEmptyUniqueListTest()
-        {
-            GetSizeOfEmptyList(uniqueList);
-        }
+        public void GetSizeOfEmptyUniqueListTest() => GetSizeOfEmptyList(uniqueList);
 
         public void GetSizeTest(IList testList)
         {
@@ -325,16 +226,10 @@
         }
 
         [TestMethod]
-        public void GetSizeListTest()
-        {
-            GetSizeTest(list);
-        }
+        public void GetSizeListTest() => GetSizeTest(list);
 
         [TestMethod]
-        public void GetSizeUniqueListTest()
-        {
-            GetSizeTest(uniqueList);
-        }
+        public void GetSizeUniqueListTest() => GetSizeTest(uniqueList);
 
         public void DeleteElementByDataTest(IList testList)
         {
@@ -348,16 +243,10 @@
         }
 
         [TestMethod]
-        public void DeleteElementByDataListTest()
-        {
-            DeleteElementByDataTest(list);
-        }
+        public void DeleteElementByDataListTest() => DeleteElementByDataTest(list);
 
         [TestMethod]
-        public void DeleteElementByDataUniqueListTest()
-        {
-            DeleteElementByDataTest(uniqueList);
-        }
+        public void DeleteElementByDataUniqueListTest() => DeleteElementByDataTest(uniqueList);
  
         [TestMethod]
         public void DeleteSeveralElementsWithTheSameDataTest()
@@ -375,23 +264,16 @@
         public void DeleteNotExistingElementTest(IList testList)
         {
             testList.AddElement(1, "String");
-
             testList.DeleteElementByData("Not existing string");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ElementDoesNotExistException))]
-        public void DeleteNotExistingElementListTest()
-        {
-            DeleteNotExistingElementTest(list);
-        }
+        public void DeleteNotExistingElementListTest() => DeleteNotExistingElementTest(list);
 
         [TestMethod]
         [ExpectedException(typeof(ElementDoesNotExistException))]
-        public void DeleteNotExistingElementUniqueListTest()
-        {
-            DeleteNotExistingElementTest(uniqueList);
-        }
+        public void DeleteNotExistingElementUniqueListTest() => DeleteNotExistingElementTest(uniqueList);
 
         public void ExistsTest(IList testList)
         {
@@ -404,16 +286,10 @@
         }
 
         [TestMethod]
-        public void ExistsListTest()
-        {
-            ExistsTest(list);
-        }
+        public void ExistsListTest() => ExistsTest(list);
 
         [TestMethod]
-        public void ExistsUniqueListTest()
-        {
-            ExistsTest(uniqueList);
-        }
+        public void ExistsUniqueListTest() => ExistsTest(uniqueList);
 
         private List list;
         private UniqueList uniqueList;

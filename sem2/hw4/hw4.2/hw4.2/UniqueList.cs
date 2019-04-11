@@ -3,7 +3,7 @@
 namespace hw4._2
 {
     /// <summary>
-    /// Singly linked list with no duplicate values.
+    /// Implementation of singly linked list with no duplicate values.
     /// </summary>
     public class UniqueList : List
     {
