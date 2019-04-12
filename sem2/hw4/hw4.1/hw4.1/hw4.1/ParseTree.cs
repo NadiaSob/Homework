@@ -66,44 +66,26 @@ namespace hw4._1
                         throw new FormatException("Input expression is incorrect.");
                 }
                 ++index;
-                Node node1 = current.LeftChild;
-                Node node2 = current.RightChild;
+                Node node1 = ((Operation)current).LeftChild;
+                Node node2 = ((Operation)current).RightChild;
 
                 Add(ref node1, ref index);
-                current.LeftChild = node1;
+                ((Operation)current).LeftChild = node1;
 
                 Add(ref node2, ref index);
-                current.RightChild = node2;
+                ((Operation)current).RightChild = node2;
             }
         }
 
         /// <summary>
         /// Prints the expression by traversing the tree.
         /// </summary>
-        public void PrintTree()
-        {
-            RecursivePrintTree(root);
-        }
+        public void PrintTree() => root.Print();
 
-        private void RecursivePrintTree(Node current)
-        {
-            string symbol = current.Symbol();
-            if (Int32.TryParse(symbol, out int number))
-            {
-                current.Print();
-            }
-            else
-            {
-                Console.Write("(");
-                current.Print();
-                Console.Write(" ");
-                RecursivePrintTree(current.LeftChild);
-                Console.Write(" ");
-                RecursivePrintTree(current.RightChild);
-                Console.Write(")");
-            }
-        }
-
+        /// <summary>
+        /// Returns the result of the calculation.
+        /// </summary>
+        /// <returns>Result of the calculation.</returns>
         public int Result() => root.Data();
     }
 }

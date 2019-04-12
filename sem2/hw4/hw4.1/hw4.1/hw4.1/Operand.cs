@@ -29,5 +29,10 @@ namespace hw4._1
         /// </summary>
         /// <returns>The operand in string</returns>
         public override string Symbol() => data.ToString();
+
+        /// <summary>
+        /// Prints the operand.
+        /// </summary>
+        public override void Print() => Console.Write(Symbol());
     }
 }

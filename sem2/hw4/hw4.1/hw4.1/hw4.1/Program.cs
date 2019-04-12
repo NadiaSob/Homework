@@ -8,7 +8,7 @@ namespace hw4._1
         static void Main(string[] args)
         {
             string expression;
-            using (StreamReader streamReader = new StreamReader("..\\..\\InputExpression.txt"))
+            using (var streamReader = new StreamReader("..\\..\\InputExpression.txt"))
             {
                 expression = streamReader.ReadToEnd();
             }

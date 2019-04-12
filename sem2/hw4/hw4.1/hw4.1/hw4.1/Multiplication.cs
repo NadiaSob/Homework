@@ -5,7 +5,7 @@ namespace hw4._1
     /// <summary>
     /// Operation of multiplication.
     /// </summary>
-    class Multiplication : Node
+    class Multiplication : Operation
     {
         /// <summary>
         /// Calculates the operation of multiplication.

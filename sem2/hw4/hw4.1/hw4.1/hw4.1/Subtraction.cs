@@ -5,7 +5,7 @@ namespace hw4._1
     /// <summary>
     /// Operation of subtraction.
     /// </summary>
-    class Subtraction : Node
+    class Subtraction : Operation
     {
         /// <summary>
         /// Calculates the operation of subtraction.

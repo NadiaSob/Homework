@@ -5,7 +5,7 @@ namespace hw4._1
     /// <summary>
     /// Operation of addition.
     /// </summary>
-    class Addition : Node
+    class Addition : Operation
     {
         /// <summary>
         /// Calculates the operation of addition

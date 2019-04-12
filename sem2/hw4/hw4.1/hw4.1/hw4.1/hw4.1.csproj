@@ -48,6 +48,7 @@
     <Compile Include="Multiplication.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Operand.cs" />
+    <Compile Include="Operation.cs" />
     <Compile Include="ParseTree.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

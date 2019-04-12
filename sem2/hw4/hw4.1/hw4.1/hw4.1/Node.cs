@@ -8,16 +8,6 @@ namespace hw4._1
     abstract public class Node
     {
         /// <summary>
-        /// Left child of the node.
-        /// </summary>
-        public Node LeftChild { get; set; }
-
-        /// <summary>
-        /// Right child of the node.
-        /// </summary>
-        public Node RightChild { get; set; }
-
-        /// <summary>
         /// Element of the node.
         /// </summary>
         /// <returns></returns>
@@ -32,9 +22,6 @@ namespace hw4._1
         /// <summary>
         /// Prints the element of the node.
         /// </summary>
-        public void Print()
-        {
-            Console.Write(Symbol());
-        }
+        public abstract void Print();
     }
 }
