@@ -1,0 +1,10 @@
+ NNNNNNNNNNNNNNN
+N @             N
+N  NNNNN NNNNN  N
+N  N         N  N
+N  N         N  N
+N  N N N N N N  N
+N  N         N  N
+N  N NNNNNNN N  N
+N               N
+ NNNNNNNNNNNNNNN
