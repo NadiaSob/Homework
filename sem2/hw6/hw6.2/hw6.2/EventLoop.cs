@@ -3,7 +3,7 @@
 namespace hw6._2
 {
     /// <summary>
-    /// 
+    /// Class reacting to user's actions.
     /// </summary>
     public class EventLoop
     {
@@ -13,7 +13,7 @@ namespace hw6._2
         public event EventHandler<EventArgs> RightHandler = (sender, args) => { };
 
         /// <summary>
-        /// 
+        /// Does certain actions depending on the key pressed by user.
         /// </summary>
         public void Run()
         {

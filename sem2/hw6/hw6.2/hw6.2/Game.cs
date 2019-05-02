@@ -5,29 +5,30 @@ using System.IO;
 namespace hw6._2
 {
     /// <summary>
-    /// 
+    /// Realisation of the game.
     /// </summary>
     public class Game
     {
         private readonly List<string> map;
-        private (int, int) playerCoordinates;
+        private (int, int) characterCoordinates;
 
         public Game(string mapPath)
         {
+            Console.CursorVisible = false;
+            Console.WriteLine("Welcome to my game!");
+            Console.WriteLine("Use arrow keys to move the character.");
+            Console.WriteLine("Try not to crash into walls.");
+            Console.WriteLine("If you want to exit game, press Esc.");
+            Console.WriteLine("Press Enter to start.");
+
+            while (Console.ReadKey().Key != ConsoleKey.Enter)
+            {
+                Console.Clear();
+                Console.WriteLine("Press Enter to start!");
+            }
+
             using (var streamReader = new StreamReader(mapPath))
             {
-                Console.CursorVisible = false;
-                Console.WriteLine("Welcome to my game!");
-                Console.WriteLine("Use arrow keys to move the character.");
-                Console.WriteLine("If you want to exit game, press Esc.");
-                Console.WriteLine("Press Enter to start.");
-
-                while (Console.ReadKey().Key != ConsoleKey.Enter)
-                {
-                    Console.Clear();
-                    Console.WriteLine("Press Enter to start!");
-                }
-
                 map = new List<string>();
 
                 string line;
@@ -38,15 +39,21 @@ namespace hw6._2
 
                 Console.Clear();
                 PrintMap();
-                FindPlayer();
+                CheckMap();
+                FindCharacter();
             }
         }
 
         private bool IsWall(int x, int y) => map[x][y] == 'N';
 
+        /// <summary>
+        /// Moves character up.
+        /// </summary>
+        /// <param name="sender">Empty object.</param>
+        /// <param name="args">Empty parameter.</param>
         public void OnUp(object sender, EventArgs args)
         {
-            var (x, y) = playerCoordinates;
+            var (x, y) = characterCoordinates;
 
             if (!IsWall(x - 1, y))
             {
@@ -54,15 +61,25 @@ namespace hw6._2
                 Console.CursorLeft = y;
                 Console.Write(' ');
 
-                playerCoordinates.Item1 = --Console.CursorTop;
-                playerCoordinates.Item2 = --Console.CursorLeft;
+                characterCoordinates.Item1 = --Console.CursorTop;
+                characterCoordinates.Item2 = --Console.CursorLeft;
                 Console.Write('@');
+            }
+            else
+            {
+                Console.Clear();
+                throw new CrashingIntoWallException();
             }
         }
 
+        /// <summary>
+        /// Moves character down.
+        /// </summary>
+        /// <param name="sender">Empty object.</param>
+        /// <param name="args">Empty parameter.</param>
         public void OnDown(object sender, EventArgs args)
         {
-            var (x, y) = playerCoordinates;
+            var (x, y) = characterCoordinates;
 
             if (!IsWall(x + 1, y))
             {
@@ -70,15 +87,25 @@ namespace hw6._2
                 Console.CursorLeft = y;
                 Console.Write(' ');
 
-                playerCoordinates.Item1 = ++Console.CursorTop;
-                playerCoordinates.Item2 = --Console.CursorLeft;
+                characterCoordinates.Item1 = ++Console.CursorTop;
+                characterCoordinates.Item2 = --Console.CursorLeft;
                 Console.Write('@');
+            }
+            else
+            {
+                Console.Clear();
+                throw new CrashingIntoWallException();
             }
         }
 
+        /// <summary>
+        /// Moves character left.
+        /// </summary>
+        /// <param name="sender">Empty object.</param>
+        /// <param name="args">Empty parameter.</param>
         public void OnLeft(object sender, EventArgs args)
         {
-            var (x, y) = playerCoordinates;
+            var (x, y) = characterCoordinates;
 
             if (!IsWall(x, y - 1))
             {
@@ -86,16 +113,26 @@ namespace hw6._2
                 Console.CursorLeft = y;
                 Console.Write(' ');
 
-                playerCoordinates.Item1 = Console.CursorTop;
+                characterCoordinates.Item1 = Console.CursorTop;
                 Console.CursorLeft -= 2;
-                playerCoordinates.Item2 = Console.CursorLeft;
+                characterCoordinates.Item2 = Console.CursorLeft;
                 Console.Write('@');
+            }
+            else
+            {
+                Console.Clear();
+                throw new CrashingIntoWallException();
             }
         }
 
+        /// <summary>
+        /// Moves character right.
+        /// </summary>
+        /// <param name="sender">Empty object.</param>
+        /// <param name="args">Empty parameter.</param>
         public void OnRight(object sender, EventArgs args)
         {
-            var (x, y) = playerCoordinates;
+            var (x, y) = characterCoordinates;
 
             if (!IsWall(x, y + 1))
             {
@@ -103,13 +140,18 @@ namespace hw6._2
                 Console.CursorLeft = y;
                 Console.Write(' ');
 
-                playerCoordinates.Item1 = Console.CursorTop;
-                playerCoordinates.Item2 = Console.CursorLeft;
+                characterCoordinates.Item1 = Console.CursorTop;
+                characterCoordinates.Item2 = Console.CursorLeft;
                 Console.Write('@');
+            }
+            else
+            {
+                Console.Clear();
+                throw new CrashingIntoWallException();
             }
         }
 
-        private void FindPlayer()
+        private void FindCharacter()
         {
             for (var x = 0; x < map.Count; ++x)
             {
@@ -117,12 +159,38 @@ namespace hw6._2
 
                 if (y != -1)
                 {
-                    playerCoordinates = (x, y);
+                    characterCoordinates = (x, y);
                     return;
                 }
             }
 
-            throw new FormatException();
+            throw new FormatException("The сharacter is not found.");
+        }
+
+        private void CheckMap()
+        {
+            bool checkCharacter = false;
+            for (var i = 0; i < map.Count; ++i)
+            {
+                for (var j = 0; j < map[i].Length; ++j)
+                {
+                    if (map[i][j] != ' ' && map[i][j] != '@' && map[i][j] != 'N')
+                    {
+                        throw new FormatException("There are invalid symbols on the map.");
+                    }
+                    if (map[i][j] == '@')
+                    {
+                        if (!checkCharacter)
+                        {
+                            checkCharacter = true;
+                        }
+                        else
+                        {
+                            throw new FormatException("There is more than one character on the map.");
+                        }
+                    }
+                }
+            }
         }
 
         private void PrintMap()
