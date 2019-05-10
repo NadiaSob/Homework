@@ -9,42 +9,27 @@ namespace hw6._2
     /// </summary>
     public class Game
     {
-        private readonly List<string> map;
+        public List<string> Map { get; private set; }
         private (int, int) characterCoordinates;
 
         public Game(string mapPath)
         {
-            Console.CursorVisible = false;
-            Console.WriteLine("Welcome to my game!");
-            Console.WriteLine("Use arrow keys to move the character.");
-            Console.WriteLine("Try not to crash into walls.");
-            Console.WriteLine("If you want to exit game, press Esc.");
-            Console.WriteLine("Press Enter to start.");
-
-            while (Console.ReadKey().Key != ConsoleKey.Enter)
-            {
-                Console.Clear();
-                Console.WriteLine("Press Enter to start!");
-            }
-
             using (var streamReader = new StreamReader(mapPath))
             {
-                map = new List<string>();
+                Map = new List<string>();
 
                 string line;
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    map.Add(line);
+                    Map.Add(line);
                 }
 
-                Console.Clear();
-                PrintMap();
                 CheckMap();
                 FindCharacter();
             }
         }
 
-        private bool IsWall(int x, int y) => map[x][y] == 'N';
+        private bool IsWall(int x, int y) => Map[x][y] == 'N';
 
         /// <summary>
         /// Moves character up.
@@ -153,9 +138,9 @@ namespace hw6._2
 
         private void FindCharacter()
         {
-            for (var x = 0; x < map.Count; ++x)
+            for (var x = 0; x < Map.Count; ++x)
             {
-                var y = map[x].IndexOf('@');
+                var y = Map[x].IndexOf('@');
 
                 if (y != -1)
                 {
@@ -170,15 +155,15 @@ namespace hw6._2
         private void CheckMap()
         {
             bool checkCharacter = false;
-            for (var i = 0; i < map.Count; ++i)
+            for (var i = 0; i < Map.Count; ++i)
             {
-                for (var j = 0; j < map[i].Length; ++j)
+                for (var j = 0; j < Map[i].Length; ++j)
                 {
-                    if (map[i][j] != ' ' && map[i][j] != '@' && map[i][j] != 'N')
+                    if (Map[i][j] != ' ' && Map[i][j] != '@' && Map[i][j] != 'N')
                     {
                         throw new FormatException("There are invalid symbols on the map.");
                     }
-                    if (map[i][j] == '@')
+                    if (Map[i][j] == '@')
                     {
                         if (!checkCharacter)
                         {
@@ -193,13 +178,16 @@ namespace hw6._2
             }
         }
 
-        private void PrintMap()
+        /// <summary>
+        /// Prints the map.
+        /// </summary>
+        public void PrintMap()
         {
             Console.Clear();
 
-            for (var i = 0; i < map.Count; ++i)
+            for (var i = 0; i < Map.Count; ++i)
             {
-                Console.WriteLine(map[i]);
+                Console.WriteLine(Map[i]);
             }
         }
     }
