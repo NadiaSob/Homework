@@ -1,7 +1,7 @@
 image: Visual Studio 2017
 
 before_build:
-  - nuget restore sem2/tests/test2/test2/test2.sln
+  - nuget restore sem2/hw7/hw7.1/Calculator/Calculator.sln
 
 build:
-  project: sem2/tests/test2/test2/test2.sln
+  project: sem2/hw7/hw7.1/Calculator/Calculator.sln
