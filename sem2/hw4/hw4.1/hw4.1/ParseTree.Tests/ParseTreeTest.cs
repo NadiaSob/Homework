@@ -93,7 +93,7 @@
         public void IncorrectInputTest()
         {
             parseTree = new ParseTree("2+2");
-            int temp = parseTree.Result();
+            parseTree.Result();
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@
         public void NoInputTest()
         {
             parseTree = new ParseTree("");
-            int temp = parseTree.Result();
+            parseTree.Result();
         }
 
         private ParseTree parseTree;
