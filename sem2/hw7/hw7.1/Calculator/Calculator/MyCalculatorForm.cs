@@ -34,12 +34,20 @@ namespace homework
 
         private void OnOperationButtonClick(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            string button = "";
+            if (e is KeyPressEventArgs e1)
+            {
+                button = e1.KeyChar.ToString();
+            }
+            else if (sender is Button sender1)
+            {
+                button = sender1.Text;
+            }
 
             if (label.Text == "")
             {
                 firstNumber = double.Parse(textBox.Text);
-                operation = button.Text;
+                operation = button;
                 label.Text = $"{firstNumber} {operation} ";
             }
             else
@@ -65,7 +73,7 @@ namespace homework
                 }
 
                 textBox.Text = $"{firstNumber}";
-                operation = button.Text;
+                operation = button;
                 label.Text += $"{secondNumber} {operation} ";
             }
             textBoxShouldBeCleared = true;
@@ -91,8 +99,6 @@ namespace homework
             textBox.Text = $"{firstNumber}";
             textBoxShouldBeCleared = true;
         }
-
-        
 
         private void OnCommaButtonClick(object sender, EventArgs e)
         {
@@ -126,6 +132,10 @@ namespace homework
         {
             textBox.Text = "0";
             label.Text = "";
+
+            firstNumber = 0;
+            secondNumber = 0;
+
             textBoxShouldBeCleared = true;
         }
 
@@ -142,6 +152,56 @@ namespace homework
                     textBox.Text = textBox.Text.Remove(0, 1);
                 }
             }
+        }
+
+        private void OnTextBoxKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= '0' && e.KeyChar <= '9')
+            {
+                if (textBoxShouldBeCleared)
+                {
+                    textBox.Clear();
+                    textBoxShouldBeCleared = false;
+                }
+                return;
+            }
+
+            if (e.KeyChar == '+' || e.KeyChar == '-' || e.KeyChar == '*' || e.KeyChar == '/')
+            {
+                OnOperationButtonClick(sender, e);
+                e.Handled = true;
+                return;
+            }
+            
+            if (e.KeyChar == '.' || e.KeyChar == ',')
+            {
+                OnCommaButtonClick(sender, e);
+                e.Handled = true;
+                return;
+            }
+
+            if (e.KeyChar == '=' || e.KeyChar == (char)Keys.Enter)
+            {
+                OnResultButtonClick(sender, e);
+                e.Handled = true;
+                return;
+            }
+
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                OnBackspaceButtonClick(sender, e);
+                e.Handled = true;
+                return;
+            }
+
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                OnClearButtonClick(sender, e);
+                e.Handled = true;
+                return;
+            }
+
+            e.Handled = true;
         }
     }
 }
