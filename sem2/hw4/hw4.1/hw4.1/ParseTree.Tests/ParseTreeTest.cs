@@ -68,7 +68,7 @@
         public void DivisionByZeroTest()
         {
             parseTree = new ParseTree("(/ 5467 0)");
-            int temp = parseTree.Result();
+            parseTree.Result();
         }
 
         [TestMethod]

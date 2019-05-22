@@ -3,7 +3,7 @@ using System.IO;
 
 namespace hw4._1
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
