@@ -11,7 +11,6 @@
         [TestInitialize]
         public void Initialize()
         {
-            functions = new Functions();
             list = new List<int>();
             newList = new List<int>();
         }
@@ -23,7 +22,7 @@
             list.Add(10);
             list.Add(100);
 
-            newList = functions.Map(list, x => x + 100);
+            newList = Functions.Map(list, x => x + 100);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -38,7 +37,7 @@
             list.Add(20);
             list.Add(-300);
 
-            newList = functions.Map(list, x => x + 15);
+            newList = Functions.Map(list, x => x + 15);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -53,7 +52,7 @@
             list.Add(10);
             list.Add(2463);
 
-            newList = functions.Map(list, x => x + 0);
+            newList = Functions.Map(list, x => x + 0);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -68,7 +67,7 @@
             list.Add(450);
             list.Add(3467);
 
-            newList = functions.Map(list, x => x - 200);
+            newList = Functions.Map(list, x => x - 200);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -83,7 +82,7 @@
             list.Add(10);
             list.Add(0);
 
-            newList = functions.Map(list, x => x - 200);
+            newList = Functions.Map(list, x => x - 200);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -98,7 +97,7 @@
             list.Add(4567);
             list.Add(89);
 
-            newList = functions.Map(list, x => x - 0);
+            newList = Functions.Map(list, x => x - 0);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -113,7 +112,7 @@
             list.Add(20);
             list.Add(300);
 
-            newList = functions.Map(list, x => x * 25);
+            newList = Functions.Map(list, x => x * 25);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -128,7 +127,7 @@
             list.Add(20);
             list.Add(-300);
 
-            newList = functions.Map(list, x => x * (-10));
+            newList = Functions.Map(list, x => x * (-10));
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -143,7 +142,7 @@
             list.Add(222);
             list.Add(-50);
 
-            newList = functions.Map(list, x => x * 0);
+            newList = Functions.Map(list, x => x * 0);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -158,7 +157,7 @@
             list.Add(400);
             list.Add(240);
 
-            newList = functions.Map(list, x => x / 4);
+            newList = Functions.Map(list, x => x / 4);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -173,7 +172,7 @@
             list.Add(-200);
             list.Add(-34560);
 
-            newList = functions.Map(list, x => x / (-10));
+            newList = Functions.Map(list, x => x / (-10));
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -187,7 +186,7 @@
         {
             list.Add(10);
 
-            newList = functions.Map(list, x => x / 0);
+            newList = Functions.Map(list, x => x / 0);
         }
 
         [TestMethod]
@@ -197,7 +196,7 @@
             list.Add(100);
             list.Add(34675);
 
-            newList = functions.Map(list, x => x % 100);
+            newList = Functions.Map(list, x => x % 100);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -212,7 +211,7 @@
             list.Add(2);
             list.Add(1688);
 
-            newList = functions.Map(list, x => x / 2 * 15 + 400 - 1);
+            newList = Functions.Map(list, x => x / 2 * 15 + 400 - 1);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -227,7 +226,7 @@
             list.Add(10);
             list.Add(100);
 
-            newList = functions.Filter(list, x => x % 2 == 0);
+            newList = Functions.Filter(list, x => x % 2 == 0);
 
             Assert.AreEqual(10, newList[0]);
             Assert.AreEqual(100, newList[1]);
@@ -241,7 +240,7 @@
             list.Add(1026);
             list.Add(0);
 
-            newList = functions.Filter(list, x => x == 0);
+            newList = Functions.Filter(list, x => x == 0);
 
             Assert.AreEqual(0, newList[0]);
             Assert.AreEqual(0, newList[1]);
@@ -255,7 +254,7 @@
             list.Add(0);
             list.Add(77);
 
-            newList = functions.Filter(list, x => x > 0);
+            newList = Functions.Filter(list, x => x > 0);
 
             Assert.AreEqual(124, newList[0]);
             Assert.AreEqual(77, newList[1]);
@@ -269,7 +268,7 @@
             list.Add(-88);
             list.Add(10);
 
-            newList = functions.Filter(list, x => true);
+            newList = Functions.Filter(list, x => true);
 
             for (var i = 0; i < newList.Count; ++i)
             {
@@ -284,7 +283,7 @@
             list.Add(20);
             list.Add(30);
 
-            var testValue = functions.Fold(list, 100, (acc, elem) => acc + elem);
+            var testValue = Functions.Fold(list, 100, (acc, elem) => acc + elem);
 
             Assert.AreEqual(160, testValue);
         }
@@ -296,7 +295,7 @@
             list.Add(667);
             list.Add(0);
 
-            var testValue = functions.Fold(list, 50000, (acc, elem) => acc - elem);
+            var testValue = Functions.Fold(list, 50000, (acc, elem) => acc - elem);
 
             Assert.AreEqual(48090, testValue);
         }
@@ -308,7 +307,7 @@
             list.Add(22);
             list.Add(-3);
 
-            var testValue = functions.Fold(list, 1, (acc, elem) => acc * elem);
+            var testValue = Functions.Fold(list, 1, (acc, elem) => acc * elem);
 
             Assert.AreEqual(-660, testValue);
         }
@@ -320,7 +319,7 @@
             list.Add(5);
             list.Add(-1000);
 
-            var testValue = functions.Fold(list, 10000, (acc, elem) => acc / elem);
+            var testValue = Functions.Fold(list, 10000, (acc, elem) => acc / elem);
 
             Assert.AreEqual(1, testValue);
         }
@@ -332,12 +331,11 @@
             list.Add(7);
             list.Add(658);
 
-            var testValue = functions.Fold(list, 5, (acc, elem) => acc * 5 - (elem % 10));
+            var testValue = Functions.Fold(list, 5, (acc, elem) => acc * 5 - (elem % 10));
 
             Assert.AreEqual(457, testValue);
         }
 
-        private Functions functions;
         private List<int> list;
         private List<int> newList;
     }

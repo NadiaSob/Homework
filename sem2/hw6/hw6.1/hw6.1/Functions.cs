@@ -6,7 +6,7 @@ namespace hw6._1
     /// <summary>
     /// Map, Filter and Fold functions.
     /// </summary>
-    public class Functions
+    public static class Functions
     {
         /// <summary>
         /// Applies given function to list elements.
@@ -14,7 +14,7 @@ namespace hw6._1
         /// <param name="list">List to apply the function.</param>
         /// <param name="function">Function applied to list elements.</param>
         /// <returns>List obtained by applying the function to each element of the given list.</returns>
-        public List<int> Map(List<int> list, Func<int, int> function)
+        public static List<int> Map(List<int> list, Func<int, int> function)
         {
             var result = new List<int>();
             foreach (var element in list)
@@ -31,7 +31,7 @@ namespace hw6._1
         /// <param name="list">Given list.</param>
         /// <param name="function">Function that checks if list element satisfy the condition.</param>
         /// <returns>List of elements that satisfy certain condition.</returns>
-        public List<int> Filter(List<int> list, Func<int, bool> function)
+        public static List<int> Filter(List<int> list, Func<int, bool> function)
         {
             var result = new List<int>();
             foreach (var element in list)
@@ -52,7 +52,7 @@ namespace hw6._1
         /// <param name="startValue">Starting value.</param>
         /// <param name="function">Function applied to list elements.</param>
         /// <returns>The accumulated value</returns>
-        public int Fold(List<int> list, int startValue, Func<int, int, int> function)
+        public static int Fold(List<int> list, int startValue, Func<int, int, int> function)
         {
             var result = startValue;
             foreach (var element in list)
