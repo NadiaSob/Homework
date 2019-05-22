@@ -10,12 +10,9 @@ namespace homework
         private string operation;
         private bool textBoxShouldBeCleared;
 
-        private readonly Calculator calculator;
-
         public MyCalculatorForm()
         {
             InitializeComponent();
-            calculator = new Calculator();
             textBox.Text = "0";
             textBoxShouldBeCleared = true;
         }
@@ -62,7 +59,7 @@ namespace homework
                 }
 
                 secondNumber = double.Parse(textBox.Text);
-                firstNumber = calculator.Calculate(operation, firstNumber, secondNumber);
+                firstNumber = Calculator.Calculate(operation, firstNumber, secondNumber);
 
                 if (firstNumber == double.PositiveInfinity)
                 {
@@ -86,7 +83,7 @@ namespace homework
                 secondNumber = double.Parse(textBox.Text);
                 label.Text = "";
             }
-            firstNumber = calculator.Calculate(operation, firstNumber, secondNumber);
+            firstNumber = Calculator.Calculate(operation, firstNumber, secondNumber);
 
             if (firstNumber == double.PositiveInfinity)
             {
