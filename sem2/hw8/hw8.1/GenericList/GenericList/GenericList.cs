@@ -57,6 +57,7 @@ namespace homework8
             {
                 GetNode(Count - 1).Next = newNode;
             }
+            ++Count;
         }
 
         /// <summary>
@@ -66,14 +67,14 @@ namespace homework8
         /// <param name="item">The object to insert into the list.</param>
         public void Insert(int index, T item)
         {
-            if (!IsCorrectIndex(index) && index != Count + 1)
+            if (!IsCorrectIndex(index) && index != Count)
             {
                 throw new ArgumentOutOfRangeException();
             }
 
             var newNode = new Node(item, null);
 
-            if (index == 1)
+            if (index == 0)
             {
                 newNode.Next = head;
                 head = newNode;
@@ -174,9 +175,17 @@ namespace homework8
                 throw new ArgumentOutOfRangeException();
             }
 
-            var previous = GetNode(index - 1);
-            previous.Next = previous.Next.Next;
-            --Count;
+            if (index == 0)
+            {
+                head = head.Next;
+                --Count;
+            }
+            else
+            {
+                var previous = GetNode(index - 1);
+                previous.Next = previous.Next.Next;
+                --Count;
+            }
         }
 
         /// <summary>
@@ -195,10 +204,6 @@ namespace homework8
         /// <param name="arrayIndex">The index in array at which copying begins.</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            if (array == null)
-            {
-                throw new ArgumentNullException();
-            }
             if (arrayIndex < 0 || arrayIndex >= array.Length)
             {
                 throw new ArgumentOutOfRangeException();
@@ -243,7 +248,7 @@ namespace homework8
 
             Node current = head;
 
-            for (var i = 1; i < index; ++i)
+            for (var i = 0; i < index; ++i)
             {
                 current = current.Next;
             }
@@ -251,6 +256,6 @@ namespace homework8
             return current;
         }
 
-        private bool IsCorrectIndex(int index) => index > 0 && index <= Count;
+        private bool IsCorrectIndex(int index) => index >= 0 && index < Count;
     }
 }
