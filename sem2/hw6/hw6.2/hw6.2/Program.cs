@@ -2,7 +2,7 @@
 
 namespace hw6._2
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
