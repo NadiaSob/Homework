@@ -22,7 +22,6 @@ namespace hw6._2
             var eventLoop = new EventLoop();
             var game = new Game("..\\..\\Map.txt");
 
-            Console.Clear();
             game.PrintMap();
 
             eventLoop.UpHandler += game.OnUp;
@@ -30,7 +29,20 @@ namespace hw6._2
             eventLoop.LeftHandler += game.OnLeft;
             eventLoop.RightHandler += game.OnRight;
 
-            eventLoop.Run();
+            eventLoop.UpHandler += game.ChangeMap;
+            eventLoop.DownHandler += game.ChangeMap;
+            eventLoop.LeftHandler += game.ChangeMap;
+            eventLoop.RightHandler += game.ChangeMap;
+
+            try
+            {
+                eventLoop.Run();
+            }
+            catch (CrashingIntoWallException)
+            {
+                Console.Clear();
+                Console.WriteLine("Oops, you failed...");
+            }
         }
     }
 }
