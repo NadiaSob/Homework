@@ -125,6 +125,7 @@ namespace GenericSet
                     return false;
                 }
             }
+            ++Count;
             return true;
         }
 
