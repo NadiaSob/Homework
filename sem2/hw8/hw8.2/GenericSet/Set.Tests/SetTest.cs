@@ -186,7 +186,7 @@
         [TestMethod]
         public void ExceptWithTest()
         {
-            var array = new int[5] { 0, 2, 3, 5, 7 };
+            var array = new int[] { 0, 2, 3, 5, 7 };
 
             for (var i = 0; i < 6; ++i)
             {
@@ -208,7 +208,7 @@
         [TestMethod]
         public void IntersectWithTest()
         {
-            var array = new int[5] { 0, 2, 3, 5, 7 };
+            var array = new int[] { 0, 2, 3, 5, 7 };
 
             for (var i = 0; i < 6; ++i)
             {
@@ -230,9 +230,9 @@
         [TestMethod]
         public void IsSubsetOfTest()
         {
-            var properSupersetArray = new int[6] { -1, 0, 1, 2, 3, 4 };
-            var supersetArray = new int[4] { 0, 1, 2, 3 };
-            var notSupersetArray = new int[5] { -2, 0, 1, 4, 5 };
+            var properSupersetArray = new int[] { -1, 0, 1, 2, 3, 4 };
+            var supersetArray = new int[] { 0, 1, 2, 3 };
+            var notSupersetArray = new int[] { -2, 0, 1, 4, 5 };
 
             for (var i = 0; i < 4; ++i)
             {
@@ -247,9 +247,9 @@
         [TestMethod]
         public void IsProperSubsetOfTest()
         {
-            var properSupersetArray = new int[6] { -1, 0, 1, 2, 3, 4 };
-            var supersetArray = new int[4] { 0, 1, 2, 3 };
-            var notSupersetArray = new int[5] { -2, 0, 1, 4, 5 };
+            var properSupersetArray = new int[] { -1, 0, 1, 2, 3, 4 };
+            var supersetArray = new int[] { 0, 1, 2, 3 };
+            var notSupersetArray = new int[] { -2, 0, 1, 4, 5 };
 
             for (var i = 0; i < 4; ++i)
             {
@@ -264,9 +264,9 @@
         [TestMethod]
         public void IsSupersetOfTest()
         {
-            var properSubsetArray = new int[4] { 0, 1, 2, 3 };
-            var subsetArray = new int[5] { 0, 1, 2, 3, 4 };
-            var notSubsetArray = new int[5] { -2, 0, 1, 4, 5 };
+            var properSubsetArray = new int[] { 0, 1, 2, 3 };
+            var subsetArray = new int[] { 0, 1, 2, 3, 4 };
+            var notSubsetArray = new int[] { -2, 0, 1, 4, 5 };
 
             for (var i = 0; i < 5; ++i)
             {
@@ -281,9 +281,9 @@
         [TestMethod]
         public void IsProperSupersetOfTest()
         {
-            var properSubsetArray = new int[4] { 0, 1, 2, 3 };
-            var subsetArray = new int[5] { 0, 1, 2, 3, 4 };
-            var notSubsetArray = new int[5] { -2, 0, 1, 4, 5 };
+            var properSubsetArray = new int[] { 0, 1, 2, 3 };
+            var subsetArray = new int[] { 0, 1, 2, 3, 4 };
+            var notSubsetArray = new int[] { -2, 0, 1, 4, 5 };
 
             for (var i = 0; i < 5; ++i)
             {
@@ -298,8 +298,8 @@
         [TestMethod]
         public void OverlapsTest()
         {
-            var overlappedArray = new int[4] { -1, 0, 1, 2 };
-            var notOverlappedArray = new int[4] { 4, 5, 6, 7 };
+            var overlappedArray = new int[] { -1, 0, 1, 2 };
+            var notOverlappedArray = new int[] { 4, 5, 6, 7 };
 
             for (var i = 0; i < 4; ++i)
             {
@@ -313,8 +313,8 @@
         [TestMethod]
         public void SetEqualsTest()
         {
-            var equalArray = new int[4] { 0, 1, 2, 3 };
-            var notEqualArray = new int[4] { 4, 5, 6, 7 };
+            var equalArray = new int[] { 0, 1, 2, 3 };
+            var notEqualArray = new int[] { 4, 5, 6, 7 };
 
             for (var i = 0; i < 4; ++i)
             {
@@ -328,7 +328,7 @@
         [TestMethod]
         public void SymmetricExceptWithTest()
         {
-            var array = new int[4] { -1, -2, 4, 5 };
+            var array = new int[] { -1, -2, 4, 5 };
 
             for (var i = -2; i < 4; ++i)
             {
@@ -350,7 +350,7 @@
         [TestMethod]
         public void UnionWithTest()
         {
-            var array = new int[5] { -1, -2, 3, 4, 5 };
+            var array = new int[] { -1, -2, 3, 4, 5 };
 
             for (var i = 0; i < 4; ++i)
             {
