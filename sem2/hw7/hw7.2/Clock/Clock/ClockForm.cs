@@ -11,6 +11,7 @@ namespace Clock
         public Clock()
         {
             InitializeComponent();
+            OnTimerTick(this, EventArgs.Empty);
         }
 
         private void OnTimerTick(object sender, EventArgs e)
