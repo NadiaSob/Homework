@@ -64,28 +64,32 @@ namespace hw6._2
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="args">Empty parameter.</param>
-        public void OnUp(object sender, EventArgs args) => MoveCharacter(characterCoordinates.Item1 - 1, characterCoordinates.Item2);
+        public void OnUp(object sender, EventArgs args) 
+            => MoveCharacter(characterCoordinates.Item1 - 1, characterCoordinates.Item2);
 
         /// <summary>
         /// Moves character down.
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="args">Empty parameter.</param>
-        public void OnDown(object sender, EventArgs args) => MoveCharacter(characterCoordinates.Item1 + 1, characterCoordinates.Item2);
+        public void OnDown(object sender, EventArgs args) 
+            => MoveCharacter(characterCoordinates.Item1 + 1, characterCoordinates.Item2);
 
         /// <summary>
         /// Moves character left.
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="args">Empty parameter.</param>
-        public void OnLeft(object sender, EventArgs args) => MoveCharacter(characterCoordinates.Item1, characterCoordinates.Item2 - 1);
+        public void OnLeft(object sender, EventArgs args)
+            => MoveCharacter(characterCoordinates.Item1, characterCoordinates.Item2 - 1);
 
         /// <summary>
         /// Moves character right.
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="args">Empty parameter.</param>
-        public void OnRight(object sender, EventArgs args) => MoveCharacter(characterCoordinates.Item1, characterCoordinates.Item2 + 1);
+        public void OnRight(object sender, EventArgs args)
+            => MoveCharacter(characterCoordinates.Item1, characterCoordinates.Item2 + 1);
 
         private void FindCharacter()
         {

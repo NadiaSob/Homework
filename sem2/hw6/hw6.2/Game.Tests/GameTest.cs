@@ -102,42 +102,6 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(CrashingIntoWallException))]
-        public void OnUpIntoWallTest()
-        {
-            testGame.OnRight(this, EventArgs.Empty);
-            testGame.OnUp(this, EventArgs.Empty);
-            testGame.OnUp(this, EventArgs.Empty);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(CrashingIntoWallException))]
-        public void OnDownIntoWallTest()
-        {
-            testGame.OnRight(this, EventArgs.Empty);
-            testGame.OnDown(this, EventArgs.Empty);
-            testGame.OnDown(this, EventArgs.Empty);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(CrashingIntoWallException))]
-        public void OnRightIntoWallTest()
-        {
-            testGame.OnUp(this, EventArgs.Empty);
-            testGame.OnRight(this, EventArgs.Empty);
-            testGame.OnRight(this, EventArgs.Empty);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(CrashingIntoWallException))]
-        public void OnLeftIntoWallTest()
-        {
-            testGame.OnUp(this, EventArgs.Empty);
-            testGame.OnLeft(this, EventArgs.Empty);
-            testGame.OnLeft(this, EventArgs.Empty);
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void InvalidSymbolsMapTest() => new Game("..\\..\\InvalidSymbolsMap.txt");
 
