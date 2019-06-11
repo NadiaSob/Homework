@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Clock
 {
+    /// <summary>
+    /// Class that shows the current time, data and weekday. 
+    /// </summary>
     public partial class Clock : Form
     {
         public Clock()
