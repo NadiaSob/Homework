@@ -34,15 +34,7 @@ namespace hw6._2
             eventLoop.LeftHandler += game.ChangeMap;
             eventLoop.RightHandler += game.ChangeMap;
 
-            try
-            {
-                eventLoop.Run();
-            }
-            catch (CrashingIntoWallException)
-            {
-                Console.Clear();
-                Console.WriteLine("Oops, you failed...");
-            }
+            eventLoop.Run();
         }
     }
 }

@@ -41,117 +41,51 @@ namespace hw6._2
 
         private bool IsEndOfMap(int x, int y) => x < 0 || y < 0 || Map.Count <= x || Map[x].Count <= y;
 
+        private void MoveCharacter(int newX, int newY)
+        {
+            var (x, y) = characterCoordinates;
+
+            if (IsEndOfMap(newX, newY))
+            {
+                return;
+            }
+
+            if (!IsWall(newX, newY))
+            {
+                Map[x][y] = ' ';
+                previousCoordinates = characterCoordinates;
+                characterCoordinates = (newX, newY);
+                Map[newX][newY] = '@';
+            }
+        }
+
         /// <summary>
         /// Moves character up.
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="args">Empty parameter.</param>
-        public void OnUp(object sender, EventArgs args)
-        {
-            var (x, y) = characterCoordinates;
-
-            if (IsEndOfMap(x - 1, y))
-            {
-                return;
-            }
-
-            if (!IsWall(x - 1, y))
-            {
-                Map[x][y] = ' ';
-
-                previousCoordinates = characterCoordinates;
-                characterCoordinates.Item1 = x - 1;
-                Map[x - 1][y] = '@';
-            }
-            else
-            {
-                throw new CrashingIntoWallException();
-            }
-        }
+        public void OnUp(object sender, EventArgs args) => MoveCharacter(characterCoordinates.Item1 - 1, characterCoordinates.Item2);
 
         /// <summary>
         /// Moves character down.
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="args">Empty parameter.</param>
-        public void OnDown(object sender, EventArgs args)
-        {
-            var (x, y) = characterCoordinates;
-
-            if (IsEndOfMap(x + 1, y))
-            {
-                return;
-            }
-
-            if (!IsWall(x + 1, y))
-            {
-                Map[x][y] = ' ';
-
-                previousCoordinates = characterCoordinates;
-                characterCoordinates.Item1 = x + 1;
-                Map[x + 1][y] = '@';
-            }
-            else
-            {
-                throw new CrashingIntoWallException();
-            }
-        }
+        public void OnDown(object sender, EventArgs args) => MoveCharacter(characterCoordinates.Item1 + 1, characterCoordinates.Item2);
 
         /// <summary>
         /// Moves character left.
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="args">Empty parameter.</param>
-        public void OnLeft(object sender, EventArgs args)
-        {
-            var (x, y) = characterCoordinates;
-
-            if (IsEndOfMap(x, y - 1))
-            {
-                return;
-            }
-
-            if (!IsWall(x, y - 1))
-            {
-                Map[x][y] = ' ';
-
-                previousCoordinates = characterCoordinates;
-                characterCoordinates.Item2 = y - 1;
-                Map[x][y - 1] = '@';
-            }
-            else
-            {
-                throw new CrashingIntoWallException();
-            }
-        }
+        public void OnLeft(object sender, EventArgs args) => MoveCharacter(characterCoordinates.Item1, characterCoordinates.Item2 - 1);
 
         /// <summary>
         /// Moves character right.
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="args">Empty parameter.</param>
-        public void OnRight(object sender, EventArgs args)
-        {
-            var (x, y) = characterCoordinates;
-
-            if (IsEndOfMap(x, y + 1))
-            {
-                return;
-            }
-
-            if (!IsWall(x, y + 1))
-            {
-                Map[x][y] = ' ';
-
-                previousCoordinates = characterCoordinates;
-                characterCoordinates.Item2 = y + 1;
-                Map[x][y + 1] = '@';
-            }
-            else
-            {
-                throw new CrashingIntoWallException();
-            }
-        }
+        public void OnRight(object sender, EventArgs args) => MoveCharacter(characterCoordinates.Item1, characterCoordinates.Item2 + 1);
 
         private void FindCharacter()
         {
@@ -208,6 +142,10 @@ namespace hw6._2
         {
             var (x, y) = previousCoordinates;
 
+            if (previousCoordinates == (0, 0))
+            {
+                return;
+            }
             Console.CursorTop = x;
             Console.CursorLeft = y - 1;
 
