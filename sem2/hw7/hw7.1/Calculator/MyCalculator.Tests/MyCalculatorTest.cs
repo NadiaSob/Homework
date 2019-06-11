@@ -7,61 +7,125 @@
     [TestClass]
     public class MyCalculatorTest
     {
-        [TestMethod]
-        public void AdditionTest()
+        [TestInitialize]
+        public void Initialize()
         {
-            Assert.AreEqual(228, Calculator.Calculate("+", 16.5, 211.5));
-            Assert.AreEqual(0, Calculator.Calculate("+", 0, 0));
+            calculator = new Calculator();
         }
 
         [TestMethod]
-        public void SubtractionTest()
+        public void NumberButtonClickTest()
         {
-            Assert.AreEqual(7099.4, Calculator.Calculate("-", 7138, 38.6));
-            Assert.AreEqual(7, Calculator.Calculate("-", 7, 0));
+            Assert.AreEqual("9", calculator.NumberButtonClick("9", ""));
+            Assert.AreEqual("95", calculator.NumberButtonClick("5", "9"));
+            Assert.AreEqual("950", calculator.NumberButtonClick("0", "95"));
         }
 
         [TestMethod]
-        public void MultiplicationTest()
+        public void OperationButtonClickTest()
         {
-            Assert.AreEqual(4000, Calculator.Calculate("*", 10, 400));
-            Assert.AreEqual(0, Calculator.Calculate("*", 75.7, 0));
+            var textBox = "988";
+            var label = "";
+            (label, textBox) = calculator.OperationButtonClick("-", label, textBox);
+            Assert.AreEqual("988", textBox);
+            Assert.AreEqual("988 - ", label);
+
+            textBox = calculator.NumberButtonClick("8", textBox);
+            Assert.AreEqual("8", textBox);
+
+            (label, textBox) = calculator.OperationButtonClick("/", label, textBox);
+            Assert.AreEqual("980", textBox);
+            Assert.AreEqual("988 - 8 / ", label);
+            textBox = calculator.NumberButtonClick("0", textBox);
+
+            (label, textBox) = calculator.ResultButtonClick(label, textBox);
+            Assert.AreEqual("Cannot divide by zero", textBox);
+            Assert.AreEqual("", label);
         }
 
         [TestMethod]
-        public void DivisionTest()
+        public void ResultButtonClickTest()
         {
-            Assert.AreEqual(1, Calculator.Calculate("/", 10, 10));
-            Assert.AreEqual(30, Calculator.Calculate("/", 210, 7));
+            var textBox = "555";
+            var label = "";
+            (label, textBox) = calculator.OperationButtonClick("/", label, textBox);
+            textBox = calculator.NumberButtonClick("5", textBox);
+
+            (label, textBox) = calculator.ResultButtonClick(label, textBox);
+            Assert.AreEqual("", label);
+            Assert.AreEqual("111", textBox);
+
+            (label, textBox) = calculator.OperationButtonClick("+", label, textBox);
+            textBox = calculator.NumberButtonClick("9", textBox);
+            (label, textBox) = calculator.ResultButtonClick(label, textBox);
+            Assert.AreEqual("", label);
+            Assert.AreEqual("120", textBox);
+
+            (label, textBox) = calculator.ResultButtonClick(label, textBox);
+            Assert.AreEqual("", label);
+            Assert.AreEqual("120", textBox);
+
+            (label, textBox) = calculator.OperationButtonClick("/", label, textBox);
+            textBox = calculator.NumberButtonClick("0", textBox);
+            (label, textBox) = calculator.ResultButtonClick(label, textBox);
+            Assert.AreEqual("", label);
+            Assert.AreEqual("Cannot divide by zero", textBox);
         }
 
         [TestMethod]
-        public void DivisionByZeroTest()
+        public void CommaButtonClickTest()
         {
-            Assert.AreEqual(double.PositiveInfinity, Calculator.Calculate("/", 10, 0));
+            var textBox = "0";
+            textBox = calculator.NumberButtonClick("5", textBox);
+            textBox = calculator.CommaButtonClick(textBox);
+            Assert.AreEqual("5,", textBox);
+
+            textBox = calculator.CommaButtonClick(textBox);
+            Assert.AreEqual("5,", textBox);
+
+            textBox = "34";
+            calculator.TextBoxShouldBeCleared = true;
+            textBox = calculator.CommaButtonClick(textBox);
+            Assert.AreEqual("0,", textBox);
         }
 
         [TestMethod]
-        public void GettingNegativeResultTest()
+        public void BackspaceButtonClickTest()
         {
-            Assert.AreEqual(-33, Calculator.Calculate("-", 3, 36));
-            Assert.AreEqual(-1, Calculator.Calculate("-", 0, 1));
+            var textBox = "0";
+            textBox = calculator.BackspaceButtonClick(textBox);
+            Assert.AreEqual("0", textBox);
+
+            textBox = calculator.NumberButtonClick("5", textBox);
+            textBox = calculator.NumberButtonClick("6", textBox);
+
+            textBox = calculator.BackspaceButtonClick(textBox);
+            Assert.AreEqual("5", textBox);
         }
 
         [TestMethod]
-        public void CalculationNegativeNumbersTest()
+        public void ClearButtonClickTest()
         {
-            Assert.AreEqual(-29.9, Calculator.Calculate("+", 6.1, -36));
-            Assert.AreEqual(45.7, Calculator.Calculate("-", -5, -50.7));
-            Assert.AreEqual(5135, Calculator.Calculate("*", -5135, -1));
-            Assert.AreEqual(7, Calculator.Calculate("/", -56, -8));
+            var textBox = "8751";
+            var label = "8751 / ";
+
+            (label, textBox) = calculator.ClearButtonClick(label, textBox);
+            Assert.AreEqual("", label);
+            Assert.AreEqual("0", textBox);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
-        public void ExpressionWithNoOperationTest()
+        public void PlusMinusButtonClickTest()
         {
-            Calculator.Calculate("", 1, 1);
+            var textBox = "8751";
+            textBox = calculator.PlusMinusButtonClick(textBox);
+
+            Assert.AreEqual("-8751", textBox);
+
+            textBox = calculator.PlusMinusButtonClick(textBox);
+            Assert.AreEqual("8751", textBox);
         }
+
+        private Calculator calculator;
     }
 }
