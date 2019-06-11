@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace homework
 {
+    /// <summary>
+    /// Class that displays numbers and operations on the form and reacts on user's actions.
+    /// </summary>
     public partial class MyCalculatorForm : Form
     {
         private Calculator calculator;
