@@ -9,13 +9,13 @@ namespace GenericSet
     /// Realisation of the collection that has unique elements and specific operations.
     /// </summary>
     /// <typeparam name="T">The type of elements in the set.</typeparam>
-    public class Set<T> : ISet<T> where T : IComparable
+    public class Set<T> : ISet<T> where T : IComparable<T>
     {
         private class Node
         {
-            public T Data;
-            public Node LeftChild;
-            public Node RightChild;
+            public T Data { get; set; }
+            public Node LeftChild { get; set; }
+            public Node RightChild { get; set; }
 
             public Node(T data, Node leftChild, Node rightChild)
             {
@@ -141,18 +141,19 @@ namespace GenericSet
                 return false;
             }
 
-            return FindNodeToRemove(ref root, item);
+            root = FindNodeToRemove(root, item);
+            return true;
         }
 
-        private bool FindNodeToRemove(ref Node current, T item)
+        private Node FindNodeToRemove(Node current, T item)
         {
             if (current.Data.CompareTo(item) > 0)
             {
-                return FindNodeToRemove(ref current.LeftChild, item);
+                current.LeftChild = FindNodeToRemove(current.LeftChild, item);
             }
             else if (current.Data.CompareTo(item) < 0)
             {
-                return FindNodeToRemove(ref current.RightChild, item);
+                current.RightChild = FindNodeToRemove(current.RightChild, item);
             }
             else
             {
@@ -176,12 +177,13 @@ namespace GenericSet
                         maximum = maximum.RightChild;
                     }
                     current.Data = maximum.Data;
-                    return FindNodeToRemove(ref current.LeftChild, current.Data);
+                    current.LeftChild = FindNodeToRemove(current.LeftChild, current.Data);
                 }
 
                 --Count;
-                return true;
             }
+
+            return current;
         }
 
         /// <summary>
@@ -200,6 +202,10 @@ namespace GenericSet
         /// <param name="arrayIndex">The index in array at which copying begins.</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if (array == null)
+            {
+                throw new ArgumentNullException();
+            }
             if (arrayIndex < 0 || arrayIndex >= array.Length)
             {
                 throw new ArgumentOutOfRangeException();
@@ -222,6 +228,17 @@ namespace GenericSet
         /// <param name="other">The collection of items to remove from the set.</param>
         public void ExceptWith(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (other == this)
+            {
+                Clear();
+                return;
+            }
+
             foreach (var current in other)
             {
                 Remove(current);
@@ -234,6 +251,11 @@ namespace GenericSet
         /// <param name="other">The collection to compare to the current set.</param>
         public void IntersectWith(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             var nodesToRemove = new List<T>();
 
             foreach (var current in this)
@@ -254,6 +276,11 @@ namespace GenericSet
         /// <returns>true if the current set is a subset of other; otherwise, false.</returns>
         public bool IsSubsetOf(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             foreach (var current in this)
             {
                 if (!other.Contains(current))
@@ -272,6 +299,11 @@ namespace GenericSet
         /// <returns>true if the current set is a superset of other; otherwise, false.</returns>
         public bool IsSupersetOf(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             foreach (var current in other)
             {
                 if (!Contains(current))
@@ -304,6 +336,11 @@ namespace GenericSet
         /// <returns>true if the current set and other share at least one common element; otherwise, false.</returns>
         public bool Overlaps(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             foreach (var current in other)
             {
                 if (Contains(current))
@@ -322,6 +359,11 @@ namespace GenericSet
         /// <returns>true if the current set is equal to other; otherwise, false.</returns>
         public bool SetEquals(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             if (Count.CompareTo(other.Count()) != 0)
             {
                 return false;
@@ -345,6 +387,11 @@ namespace GenericSet
         /// <param name="other">The collection to compare to the current set.</param>
         public void SymmetricExceptWith(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             foreach (var current in other)
             {
                 if (!Remove(current))
@@ -360,6 +407,11 @@ namespace GenericSet
         /// <param name="other">The collection to compare to the current set.</param>
         public void UnionWith(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             foreach (var current in other)
             {
                 Add(current);
