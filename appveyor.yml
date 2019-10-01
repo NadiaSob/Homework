@@ -1,7 +1,7 @@
 image: Visual Studio 2017
 
 before_build:
-  - nuget restore sem2/hw6/hw6.1/hw6.1.sln
+  - nuget restore sem2/hw8/hw8.1/GenericList/GenericList.sln
 
 build:
-  project: sem2/hw6/hw6.1/hw6.1.sln
+  project: sem2/hw8/hw8.1/GenericList/GenericList.sln
